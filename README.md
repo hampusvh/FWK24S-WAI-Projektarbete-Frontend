@@ -1,2 +1,1 @@
-# FWK24S-WAI-Projektarbete
-Projektarbete (Webbsäkerhet: Analys &amp; Implementation)
+# FWK24S-WAI Projektarbete Frontend
