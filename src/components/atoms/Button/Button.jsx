@@ -1,3 +1,6 @@
+import styles from './Button.module.css';
+import clsx from "clsx";
+
 const Button = ({
     type = "button",
     onClick = () => console.log("default click!"),
@@ -10,7 +13,7 @@ const Button = ({
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`button ${className}`}
+            className={clsx(styles.button, className)}
         >
             {children}
         </button>
