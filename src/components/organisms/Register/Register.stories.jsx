@@ -1,5 +1,5 @@
 import Register from './Register';
-import { fn } from "storybook/test";
+import { action } from 'storybook/actions';
 
 export default {
   title: "Organisms/RegisterForm",
@@ -8,6 +8,6 @@ export default {
 
 export const Defualt = {
   args: {
-    onSubmit: fn(),
-  }
+    handleSubmit: action("form submitted"),
+  },
 }
