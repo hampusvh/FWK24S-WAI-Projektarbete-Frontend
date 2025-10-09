@@ -6,7 +6,7 @@ export default {
   component: Register,
 }
 
-export const Defualt = {
+export const Default = {
   args: {
     handleSubmit: action("form submitted"),
   },
