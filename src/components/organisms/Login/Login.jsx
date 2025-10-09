@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Input } from "../atoms/Input";
-import { Button } from "../atoms/Button";
+import Input from "../../atoms/Input/Input";
+import Button from "../../atoms/Button/Button";
 import "./Login.module.css";
 
 const Login = () => {
