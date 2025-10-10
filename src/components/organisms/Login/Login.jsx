@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
-import "./Login.module.css";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +14,7 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <Input
         type="text"
         placeholder="Username"

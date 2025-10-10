@@ -11,7 +11,7 @@ const Register = ({ handleSubmit = () => console.log("default click from registe
   const [phoneNumber, setPhoneNumber] = useState("");
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <Input
         type="test"
         placeholder="Email"
@@ -32,7 +32,7 @@ const Register = ({ handleSubmit = () => console.log("default click from registe
       />
       <Input
         type="test"
-        placeholder="PhoneNumber"
+        placeholder="Phone number"
         value={phoneNumber}
         onChange={(e) => setPhoneNumber(e.target.value)}
       />
