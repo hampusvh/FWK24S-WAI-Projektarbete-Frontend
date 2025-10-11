@@ -26,7 +26,7 @@ const Register = ({ handleSubmit = () => console.log("default click from registe
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <Input
         type="email"
         name="email"

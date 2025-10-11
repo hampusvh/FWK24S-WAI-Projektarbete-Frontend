@@ -5,6 +5,7 @@ const Button = ({
     type = "button",
     onClick = () => console.log("default click!"),
     disabled = false,
+    variant = "primary",  
     children = "Missing button content",
     className = ""
 }) => {
@@ -13,7 +14,7 @@ const Button = ({
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={clsx(styles.button, className)}
+            className={clsx(styles.button, styles[variant], className)}
         >
             {children}
         </button>
