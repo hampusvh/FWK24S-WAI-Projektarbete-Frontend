@@ -3,42 +3,62 @@ import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import styles from "./Register.module.css";
 
-const Register = ({ handleSubmit = () => console.log("default click from register") }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("user");
-  const [phoneNumber, setPhoneNumber] = useState("");
+const Register = ({ handleSubmit = () => console.log("default click from register"), loading, error }) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    role: "user",
+    phoneNumber: "",
+  });
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    handleSubmit(formData);
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
       <Input
-        type="test"
+        type="email"
+        name="email"
         placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={formData.email}
+        onChange={onChange}
       />
       <Input
-        type="test"
+        type="text"
+        name="username"
         placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={formData.username}
+        onChange={onChange}
       />
       <Input
-        type="test"
+        type="password"
+        name="password"
         placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={formData.password}
+        onChange={onChange}
       />
       <Input
-        type="test"
-        placeholder="PhoneNumber"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        type="tel"
+        name="phoneNumber"
+        placeholder="Phone number"
+        value={formData.phoneNumber}
+        onChange={onChange}
       />
       <Button type="submit">
-        Register
+        {loading ? "Registering..." : "Register"}
       </Button>
+      {error && <p>{error}</p>} {/* TODO: lägg till i komponent */}
     </form>
   )
 };
