@@ -5,5 +5,7 @@ export const useAuthService = () => {
 
   const register = (email, username, password, role, phoneNumber) => auth.post("/auth/register", { email, username, password, role, phoneNumber });
 
-  return { register };
+  const logout = () => auth.post("/auth/logout", {});
+
+  return { register, logout };
 }
