@@ -10,6 +10,7 @@ const ApiProvider = ({ children }) => {
   const request = async (base, endpoint, options = {}) => {
     try {
       const res = await fetch(`${base}${endpoint}`, {
+        credentials: "include",
         headers: { "Content-Type": "application/json", ...options.headers },
         ...options,
       });
