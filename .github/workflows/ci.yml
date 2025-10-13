@@ -12,7 +12,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        status: sucess
+        status: success
         title: "📢 New push to Frontend repo"
         color: 5965F2
         description: |
