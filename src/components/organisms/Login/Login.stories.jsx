@@ -1,5 +1,5 @@
 import Login from "./Login";
-import { fn } from "storybook/test";
+import { action } from 'storybook/actions';
 
 export default {
   title: "Organisms/Login",
@@ -8,6 +8,15 @@ export default {
 
 export const Default = {
   args: {
-    onSubmit: fn(),
+    handleSubmit: action("form submitted"),
+    loading: false,
+  },
+};
+
+export const Error = {
+  args: {
+    handleSubmit: action("form submitted"),
+    loading: false,
+    error: "This is a error message",
   },
 };

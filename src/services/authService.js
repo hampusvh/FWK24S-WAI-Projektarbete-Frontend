@@ -4,8 +4,8 @@ export const useAuthService = () => {
   const { auth } = useApi();
 
   const register = (email, username, password, role, phoneNumber) => auth.post("/auth/register", { email, username, password, role, phoneNumber });
-
+  const login = (username, password) => auth.post("/auth/login", {username, password});
   const logout = () => auth.post("/auth/logout", {});
 
-  return { register, logout };
+  return { register, login, logout };
 }
