@@ -14,8 +14,10 @@
   "dependencies": {
     "@storybook/addon-actions": "^9.0.8",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-google-recaptcha-v3": "^1.11.0",
     "react-router-dom": "^7.9.4"
   },
   "devDependencies": {

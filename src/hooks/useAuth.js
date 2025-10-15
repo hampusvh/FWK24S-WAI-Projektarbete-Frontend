@@ -34,11 +34,11 @@ export const useAuth = () => {
     }
   };
 
-  const handleLogin = async (username, password) => {
+  const handleLogin = async (username, password, token) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await login(username, password);
+      const data = await login(username, password, token);
       return data;
     } catch (err) {
       setError(err.message);
