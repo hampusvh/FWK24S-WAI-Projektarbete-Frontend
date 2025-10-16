@@ -20,7 +20,7 @@ const ApiProvider = ({ children }) => {
       return data;
     } catch (err) {
       console.error(err);
-      return null;
+      throw err;
     }
   };
 

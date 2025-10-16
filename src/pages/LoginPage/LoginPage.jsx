@@ -1,10 +1,13 @@
-import Login from '../../components/organisms/Login/Login';
+import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import Login from '../../components/organisms/Login/Login';
+import Toaster from '../../components/organisms/Toaster/Toaster';
 import { useRecaptcha } from "../../utils/recaptcha";
 
 
 const LoginPage = () => {
+  const [showError, setShowError] = useState(false);
   const { loading, error, handleLogin } = useAuth();
   const {getRecaptchaToken} = useRecaptcha()
   const navigate = useNavigate();
@@ -17,13 +20,15 @@ const LoginPage = () => {
       return;
     }
     const result = await handleLogin(username, password, token);
-    if (result) navigate("/");
+    !result ? setShowError(true) : navigate("/");
+    setTimeout(() => setShowError(false), 4000);
   }
 
   return (
-    <>
+    <div>
       <Login handleSubmit={handleSubmit} loading={loading} error={error} />
-    </>
+      {showError && <Toaster icon="🚫" text={error} />}
+    </div>
   );
 };
 

@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../hooks/useAuth';
 import Register from '../../components/organisms/Register/Register';
+import Toaster from '../../components/organisms/Toaster/Toaster';
 import { useRecaptcha } from "../../utils/recaptcha";
 
 const RegisterPage = () => {
   const { loading, error, handleRegister } = useAuth();
+  const [showError, setShowError] = useState(false);
   const {getRecaptchaToken} = useRecaptcha()
   const navigate = useNavigate();
 
@@ -16,12 +19,14 @@ const RegisterPage = () => {
       return;
     }
     const result = await handleRegister(email, username, password, role, phoneNumber, token);
-    if (result) navigate("/login");
+    !result ? setShowError(true) : navigate("/login");
+    setTimeout(() => setShowError(false), 4000);
   }
 
   return (
     <div>
       <Register handleSubmit={handleSubmit} loading={loading} error={error} />
+      {showError && <Toaster icon="🚫" text={error} />}
     </div>
   );
 };
