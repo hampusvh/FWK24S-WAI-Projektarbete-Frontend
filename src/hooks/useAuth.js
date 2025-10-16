@@ -7,11 +7,11 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleRegister = async (email, username, password, role, phoneNumber) => {
+  const handleRegister = async (email, username, password, role, phoneNumber, token) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await register(email, username, password, role, phoneNumber);
+      const data = await register(email, username, password, role, phoneNumber, token);
       return data;
     } catch (err) {
       setError(err.message);
