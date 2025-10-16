@@ -1,9 +1,12 @@
 import { BrowserRouter } from "react-router-dom"
 import ApiProvider from './ApiProvider';
+import CsrfProvider from "./CsrfProvider";
 
 const AppProvider = ({ children }) => (
   <BrowserRouter>
-    <ApiProvider>{children}</ApiProvider>
+    <CsrfProvider>
+      <ApiProvider>{children}</ApiProvider>
+    </CsrfProvider>
   </BrowserRouter>
 );
 

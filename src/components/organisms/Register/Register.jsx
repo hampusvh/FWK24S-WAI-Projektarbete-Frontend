@@ -8,7 +8,6 @@ const Register = ({ handleSubmit = () => console.log("default click from registe
     email: "",
     username: "",
     password: "",
-    role: "user",
     phoneNumber: "",
   });
 

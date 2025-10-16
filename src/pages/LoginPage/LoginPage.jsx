@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Login from '../../components/organisms/Login/Login';
 import Toaster from '../../components/organisms/Toaster/Toaster';
 import { useRecaptcha } from "../../utils/recaptcha";
+import { useCsrf } from '../../providers/CsrfProvider';
 
 
 const LoginPage = () => {
@@ -11,6 +12,7 @@ const LoginPage = () => {
   const { loading, error, handleLogin } = useAuth();
   const {getRecaptchaToken} = useRecaptcha()
   const navigate = useNavigate();
+  const { csrf } = useCsrf();
 
   const handleSubmit = async (formData) => {
     const { username, password } = formData;
@@ -19,7 +21,7 @@ const LoginPage = () => {
       alert("reCAPTCHA verification failed");
       return;
     }
-    const result = await handleLogin(username, password, token);
+    const result = await handleLogin(username, password, token, csrf);
     !result ? setShowError(true) : navigate("/");
     setTimeout(() => setShowError(false), 4000);
   }

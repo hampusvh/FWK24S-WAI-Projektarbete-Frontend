@@ -4,7 +4,7 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 function App() {
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={`${VITE_RECAPTCHA_KEY}`}>
+    <GoogleReCaptchaProvider reCaptchaKey={`${import.meta.env.VITE_RECAPTCHA_KEY}`}>
       <AppProvider>
         <Router />
       </AppProvider>

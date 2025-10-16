@@ -7,11 +7,11 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleRegister = async (email, username, password, role, phoneNumber, token) => {
+  const handleRegister = async (email, username, password, phoneNumber, token, csrfToken) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await register(email, username, password, role, phoneNumber, token);
+      const data = await register(email, username, password, phoneNumber, token, csrfToken);
       return data;
     } catch (err) {
       setError(err.message);
@@ -34,11 +34,11 @@ export const useAuth = () => {
     }
   };
 
-  const handleLogin = async (username, password, token) => {
+  const handleLogin = async (username, password, token, csrfToken) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await login(username, password, token);
+      const data = await login(username, password, token, csrfToken);
       return data;
     } catch (err) {
       setError(err.message);

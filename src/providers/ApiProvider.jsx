@@ -11,8 +11,8 @@ const ApiProvider = ({ children }) => {
     try {
       const res = await fetch(`${base}${endpoint}`, {
         credentials: "include",
-        headers: { "Content-Type": "application/json", ...options.headers },
         ...options,
+        headers: { "Content-Type": "application/json", ...(options.headers || {}), },
       });
 
       const data = await res.json();
@@ -26,14 +26,14 @@ const ApiProvider = ({ children }) => {
 
   const api = {
     auth: {
-      get: (url) => request(AUTH_URL, url, { method: "GET" }),
-      post: (url, body) =>
-        request(AUTH_URL, url, { method: "POST", body: JSON.stringify(body) }),
+      get: (url, csrfToken = "") => request(AUTH_URL, url, { method: "GET", headers: { "X-CSRF-Token": csrfToken } }),
+      post: (url, body, csrfToken = "") =>
+        request(AUTH_URL, url, { method: "POST", body: JSON.stringify(body), headers: { "X-CSRF-Token": csrfToken } }),
     },
     domain: {
-      get: (url) => request(DOMAIN_URL, url, { method: "GET" }),
-      post: (url, body) =>
-        request(DOMAIN_URL, url, { method: "POST", body: JSON.stringify(body) }),
+      get: (url, csrfToken = "") => request(DOMAIN_URL, url, { method: "GET", headers: { "X-CSRF-Token": csrfToken } }),
+      post: (url, body, csrfToken = "") =>
+        request(DOMAIN_URL, url, { method: "POST", body: JSON.stringify(body), headers: { "X-CSRF-Token": csrfToken } }),
     },
   };
 
