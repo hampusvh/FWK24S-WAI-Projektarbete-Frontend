@@ -41,7 +41,6 @@ const Login = ({ handleSubmit, loading, error }) => {
       />
 
       <Button type="submit">Login</Button>
-      {error && <p>{error}</p>} {/* TODO: lägg till i komponent */}
     </form>
   );
 };

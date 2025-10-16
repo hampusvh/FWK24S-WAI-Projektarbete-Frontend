@@ -19,11 +19,3 @@ export const Loading = {
     loading: true,
   },
 };
-
-export const Error = {
-  args: {
-    handleSubmit: action("form submitted"),
-    loading: false,
-    error: "This is a error message",
-  },
-};
