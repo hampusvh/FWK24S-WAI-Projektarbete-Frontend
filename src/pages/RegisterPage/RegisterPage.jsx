@@ -7,7 +7,7 @@ import { useRecaptcha } from "../../utils/recaptcha";
 import { useCsrf } from '../../providers/CsrfProvider';
 
 const RegisterPage = () => {
-  const { loading, error, handleRegister } = useAuth();
+  const { loading, error, setError, handleRegister } = useAuth();
   const [showError, setShowError] = useState(false);
   const {getRecaptchaToken} = useRecaptcha()
   const navigate = useNavigate();
@@ -18,7 +18,12 @@ const RegisterPage = () => {
     const { email, username, password, phoneNumber } = formData;
     const token = await getRecaptchaToken('register')
     if(!token){
-      alert("reCAPTCHA verification failed");
+      setError("reCAPTCHA verification failed");
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false)
+        setError("")
+      }, 4000);
       return;
     }
     const result = await handleRegister(email, username, password, phoneNumber, token, csrf);
@@ -29,7 +34,7 @@ const RegisterPage = () => {
   return (
     <div>
       <Register handleSubmit={handleSubmit} loading={loading} error={error} />
-      {showError && <Toaster icon="🚫" text={error} />}
+      {showError && <Toaster icon="❗️" text={error} />}
     </div>
   );
 };

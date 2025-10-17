@@ -6,10 +6,9 @@ import Toaster from '../../components/organisms/Toaster/Toaster';
 import { useRecaptcha } from "../../utils/recaptcha";
 import { useCsrf } from '../../providers/CsrfProvider';
 
-
 const LoginPage = () => {
   const [showError, setShowError] = useState(false);
-  const { loading, error, handleLogin } = useAuth();
+  const { loading, error, setError, handleLogin } = useAuth();
   const {getRecaptchaToken} = useRecaptcha()
   const navigate = useNavigate();
   const { csrf } = useCsrf();
@@ -18,7 +17,12 @@ const LoginPage = () => {
     const { username, password } = formData;
     const token = await getRecaptchaToken("login");
     if (!token) {
-      alert("reCAPTCHA verification failed");
+      setError("reCAPTCHA verification failed");
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false)
+        setError("")
+      }, 4000);
       return;
     }
     const result = await handleLogin(username, password, token, csrf);
@@ -29,7 +33,7 @@ const LoginPage = () => {
   return (
     <div>
       <Login handleSubmit={handleSubmit} loading={loading} error={error} />
-      {showError && <Toaster icon="🚫" text={error} />}
+      {showError && <Toaster icon="❗️" text={error} />}
     </div>
   );
 };
