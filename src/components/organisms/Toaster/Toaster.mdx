@@ -1,0 +1,28 @@
+### 📘 Dokumentation: `Toaster`
+
+#### **Beskrivning**
+
+`Toaster` visar ett meddelande (ofta kortvarigt) på skärmen, vanligtvis för att ge användaren feedback som bekräftelse, varning eller fel.
+Den använder `Card` för layout och `Text` för innehåll.
+
+---
+
+#### **Props**
+
+| Prop       | Typ                                                            | Default         | Beskrivning                                             |
+| ---------- | -------------------------------------------------------------- | --------------- | ------------------------------------------------------- |
+| `icon`     | `ReactNode`                                                    | `undefined`     | En ikon eller symbol som visas till vänster om texten.  |
+| `text`     | `string`                                                       | `""`            | Meddelandetexten som visas i toasten.                   |
+| `position` | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"bottom-left"` | Placering på skärmen. CSS-klasser styr positioneringen. |
+
+---
+
+#### **Exempel**
+
+```jsx
+<Toaster 
+  icon="✅" 
+  text="Your changes have been saved!" 
+  position="top-right" 
+/>
+```
