@@ -1,0 +1,35 @@
+.ConsentPreferencesBanner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.Description {
+  font-size: 13px;
+  color: #777;
+  margin: 0 0 16px 48px;
+  line-height: 1.4;
+}
+
+.optionButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.optionButtons .acceptAll {
+    background-color: rgb(76, 149, 76);
+}
+
+.optionButtons .rejectAll {
+    background-color: rgb(219, 61, 61);
+}
+
+.optionButtons .acceptAll:hover {
+    background-color: rgb(90, 175, 90);
+}
+
+.optionButtons .rejectAll:hover {
+    background-color: rgb(252, 71, 71);
+}

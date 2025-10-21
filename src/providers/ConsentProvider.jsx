@@ -3,29 +3,41 @@ import { useCookies } from "react-cookie";
 
 export const ConsentContext = createContext();
 
+const VERSION = "2025-10-21";
+
 const ConsentProvider = ({ children }) => {
-    const [consent, setConsent] = useState({});
+    const [consent, setConsent] = useState({
+        version: VERSION,
+        timestamp: new Date().toISOString(),
+        necessary: false,
+        functional: false,
+        analytics: false,
+        marketing: false,
+        personalization: false,
+        security: false,
+    });
+
     const [cookie, setCookie] = useCookies(["consent"]);
 
     useEffect(() => {
         setCookie("consent", consent, { path: "/" });
     }, [consent]);
 
-    const updateConsent = (necessary, functional, analytics, marketing, personalization, security) => {
+    const consentAll = (accept) => {
         setConsent({
-            version: "2025-10-21",
+            version: VERSION,
             timestamp: new Date().toISOString(),
-            necessary: necessary === true,
-            functional: functional === true,
-            analytics: analytics === true,
-            marketing: marketing === true,
-            personalization: personalization === true,
-            security: security === true
+            necessary: accept,
+            functional: accept,
+            analytics: accept,
+            marketing: accept,
+            personalization: accept,
+            security: accept
         });
     }
 
     return (
-        <ConsentContext.Provider value={{ consent, updateConsent }}>
+        <ConsentContext.Provider value={{ consent, consentAll, setConsent }}>
             {children}
         </ConsentContext.Provider>
     );
