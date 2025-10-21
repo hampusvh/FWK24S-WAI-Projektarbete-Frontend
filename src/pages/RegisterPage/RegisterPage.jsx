@@ -16,15 +16,18 @@ const RegisterPage = () => {
   const handleSubmit = async (formData) => {
     console.log(csrf)
     const { email, username, password, phoneNumber } = formData;
-    const token = await getRecaptchaToken('register')
-    if(!token){
-      setError("reCAPTCHA verification failed");
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false)
-        setError("")
-      }, 4000);
-      return;
+    let token = null;
+    if(import.meta.env.VITE_ENV == "production") {
+      token = await getRecaptchaToken('register')
+      if(!token){
+        setError("reCAPTCHA verification failed");
+        setShowError(true);
+        setTimeout(() => {
+          setShowError(false)
+          setError("")
+        }, 4000);
+        return;
+      }
     }
     const result = await handleRegister(email, username, password, phoneNumber, token, csrf);
     !result ? setShowError(true) : navigate("/login");

@@ -20,11 +20,11 @@ export const useAuth = () => {
     }
   };
 
-  const handleLogout = async () => {
+  const handleLogout = async (recaptchaToken, csrfToken) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await logout();
+      const data = await logout(recaptchaToken, csrfToken);
       setUser(null);
       return data;
     } catch (err) {

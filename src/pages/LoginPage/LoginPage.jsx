@@ -15,15 +15,19 @@ const LoginPage = () => {
 
   const handleSubmit = async (formData) => {
     const { username, password } = formData;
-    const token = await getRecaptchaToken("login");
-    if (!token) {
-      setError("reCAPTCHA verification failed");
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false)
-        setError("")
-      }, 4000);
-      return;
+    let token = null;
+
+    if(import.meta.env.VITE_ENV == "production") {
+      token = await getRecaptchaToken("login");
+      if (!token) {
+        setError("reCAPTCHA verification failed");
+        setShowError(true);
+        setTimeout(() => {
+          setShowError(false)
+          setError("")
+        }, 4000);
+        return;
+      }
     }
     const result = await handleLogin(username, password, token, csrf);
     !result ? setShowError(true) : navigate("/");
