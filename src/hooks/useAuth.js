@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuthService } from '../services/authService';
 
 export const useAuth = () => {
-  const { register, login, logout } = useAuthService();
+  const { register, login, logout, deleteUser } = useAuthService();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -26,6 +26,7 @@ export const useAuth = () => {
     try {
       const data = await logout();
       setUser(null);
+      sessionStorage.clear();
       return data;
     } catch (err) {
       setError(err.message);
@@ -39,6 +40,7 @@ export const useAuth = () => {
     setError(null);
     try {
       const data = await login(username, password, token, csrfToken);
+      sessionStorage.setItem("id", data.data.id);
       return data;
     } catch (err) {
       setError(err.message);
@@ -47,5 +49,18 @@ export const useAuth = () => {
     }
   };
 
-  return { loading, error, setError, handleRegister, handleLogin, handleLogout };
+  const handleDeleteUser = async (id) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await deleteUser(id);
+      return data;
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { loading, error, setError, handleRegister, handleLogin, handleLogout, handleDeleteUser };
 };
