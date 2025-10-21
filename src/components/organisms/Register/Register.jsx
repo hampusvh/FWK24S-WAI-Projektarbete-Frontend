@@ -60,6 +60,8 @@ const Register = ({ handleSubmit = () => console.log("default click from registe
       </Button>
       {error && <p>{error}</p>} {/* TODO: lägg till i komponent */}
 
+      <div className="agreement-terms">By registering, you hereby accept to the <Link to="/terms">terms of agreement</Link></div>
+
       <div>Already have an account? <Link to="/login">Login</Link></div>
 
     </form>
