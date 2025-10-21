@@ -3,18 +3,15 @@ import clsx from "clsx";
 
 const Banner = ({
     type = "Banner",
-    onClick = () => console.log("default click!"),
-    disabled = false,
-    variant = "primary",  
+    visible = true,
     children = "Missing Banner content",
     className = ""
 }) => {
     return (
         <div
             type={type}
-            onClick={onClick}
-            disabled={disabled}
-            className={clsx(styles.Banner, styles[variant], className)}
+            className={clsx(styles.Banner, className)}
+            style={{visibility: visible ? "visible" : "hidden"}}
         >
             {children}
         </div>

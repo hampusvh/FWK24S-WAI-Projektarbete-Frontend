@@ -2,22 +2,29 @@ import clsx from "clsx";
 import styles from './ConsentBanner.module.css';
 import Banner from "../../atoms/Banner/Banner";
 import Button from "../../atoms/Button/Button";
+import { background } from "storybook/internal/theming";
+import { useState } from "react";
 
 const ConsentBanner = ({ contentText }) => {
+    const [visible, setVisible] = useState(true);
+
     const handleAccept = () => {
         console.log("User clicked Accept All");
+        setVisible(false);
     }
 
     const handleReject = () => {
         console.log("User clicked Reject All");
+        setVisible(false);
     }
 
     const handleCustomize = () => {
         console.log("User clicked Customize Preferences");
+        setVisible(false);
     }
 
     return (
-        <Banner>
+        <Banner visible={visible}>
             <p>{contentText}</p>
 
             <div className={clsx(styles.optionButtons)}>

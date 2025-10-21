@@ -8,4 +8,5 @@
     bottom: 20px;
     right: 20px;
     white-space: pre-line;
+    z-index: 2;
 }
