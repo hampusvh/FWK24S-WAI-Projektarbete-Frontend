@@ -1,6 +1,8 @@
+import LogoutButton from "../../components/molecules/LogoutButton/LogoutButton";
+
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>HomePage <LogoutButton /></div>
   );
 };
 
