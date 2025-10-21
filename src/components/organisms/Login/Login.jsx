@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import styles from "./Login.module.css";
@@ -41,6 +42,9 @@ const Login = ({ handleSubmit, loading, error }) => {
       />
 
       <Button type="submit">Login</Button>
+
+          <div>Don't have an account? <Link to="/register">Register</Link></div>
+
     </form>
   );
 };
