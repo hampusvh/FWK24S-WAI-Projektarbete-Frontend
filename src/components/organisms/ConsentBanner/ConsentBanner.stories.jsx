@@ -1,3 +1,5 @@
+import { CookiesProvider, useCookies } from "react-cookie";
+import ConsentProvider from "../../../providers/ConsentProvider";
 import ConsentBanner from "./ConsentBanner";
 
 export default {
@@ -5,7 +7,31 @@ export default {
   component: ConsentBanner,
 }
 
-const Template = (args) => <ConsentBanner {...args} />;
+const Cookies = () => {
+  const [cookies] = useCookies();
+  return (
+    <div style={{display: "flex", gap: "10px"}}>
+      Cookie (version: {cookies.consent.version || "never"}, updated: {cookies.consent.timestamp || "never"}):
+      <pre>Necessary: {cookies.consent.necessary?.toString() || "false"}</pre>
+      <pre>Functional: {cookies.consent.functional?.toString() || "false"}</pre>
+      <pre>Analytics: {cookies.consent.analytics?.toString() || "false"}</pre>
+      <pre>Marketing: {cookies.consent.marketing?.toString() || "false"}</pre>
+      <pre>Personalization: {cookies.consent.personalization?.toString() || "false"}</pre>
+      <pre>Security: {cookies.consent.security?.toString() || "false"}</pre>
+    </div>
+  );
+}
+
+const Template = (args) => {
+  return (
+    <CookiesProvider>
+      <ConsentProvider>
+        <Cookies />
+        <ConsentBanner {...args} />
+      </ConsentProvider>
+    </CookiesProvider>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
