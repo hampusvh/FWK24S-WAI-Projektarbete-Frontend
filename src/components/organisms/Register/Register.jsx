@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import styles from "./Register.module.css";
@@ -58,6 +59,9 @@ const Register = ({ handleSubmit = () => console.log("default click from registe
         {loading ? "Registering..." : "Register"}
       </Button>
       {error && <p>{error}</p>} {/* TODO: lägg till i komponent */}
+
+      <div>Already have an account? <Link to="/login">Login</Link></div>
+
     </form>
   )
 };
