@@ -19,14 +19,3 @@ export const Default = {
     variant: "primary",
   },
 };
-
-export const Disabled = {
-  args: {
-    children: "Disabled Banner",
-    disabled: true,
-    onClick: fn(),
-    variant: "primary",
-  },
-};
-
-export const MissingArgs = { args: {} };
