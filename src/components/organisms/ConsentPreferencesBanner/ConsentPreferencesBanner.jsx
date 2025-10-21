@@ -6,7 +6,7 @@ import Switch from "../../atoms/Switch/Switch";
 import { useConsent } from "../../../providers/ConsentProvider";
 import Button from "../../atoms/Button/Button";
 
-const ConsentconsentBanner = ({ handleReject, handleAccept, handleBack }) => {
+const ConsentconsentBanner = ({ handleBack }) => {
     const [visible, setVisible] = useState(true);
     const { consent, setConsent } = useConsent();
 
@@ -99,8 +99,7 @@ const ConsentconsentBanner = ({ handleReject, handleAccept, handleBack }) => {
 
             <div className={clsx(styles.optionButtons)}>
                 <Button onClick={handleBack}>Back</Button>
-                <Button className={clsx(styles.acceptAll)} onClick={handleAccept}>Accept All</Button>
-                <Button className={clsx(styles.rejectAll)} onClick={handleReject}>Reject All</Button>
+                <Button onClick={() => setVisible(false)}>Close</Button>
             </div>
         </Banner>
     );
