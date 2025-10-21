@@ -29,6 +29,7 @@ const ApiProvider = ({ children }) => {
       get: (url, csrfToken = "") => request(AUTH_URL, url, { method: "GET", headers: { "X-CSRF-Token": csrfToken } }),
       post: (url, body, csrfToken = "") =>
         request(AUTH_URL, url, { method: "POST", body: JSON.stringify(body), headers: { "X-CSRF-Token": csrfToken } }),
+      delete: (url, csrfToken = "") => request(AUTH_URL, url, { method: "DELETE", headers: { "X-CSRF-Token": csrfToken } }),
     },
     domain: {
       get: (url, csrfToken = "") => request(DOMAIN_URL, url, { method: "GET", headers: { "X-CSRF-Token": csrfToken } }),
