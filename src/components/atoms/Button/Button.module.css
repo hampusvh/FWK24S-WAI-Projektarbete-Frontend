@@ -18,3 +18,11 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.warning {
+  background-color: rgb(187, 10, 10);
+}
+
+.warning:hover {
+  background-color: rgb(204, 14, 14) !important;
+}
