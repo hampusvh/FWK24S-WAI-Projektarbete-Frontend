@@ -5,6 +5,8 @@ import Login from '../../components/organisms/Login/Login';
 import Toaster from '../../components/organisms/Toaster/Toaster';
 import { useRecaptcha } from "../../utils/recaptcha";
 import { useCsrf } from '../../providers/CsrfProvider';
+import clsx from 'clsx';
+import styles from "./LoginPage.module.css";
 
 const LoginPage = () => {
   const [showError, setShowError] = useState(false);
@@ -35,7 +37,7 @@ const LoginPage = () => {
   }
 
   return (
-    <div>
+    <div className={clsx(styles.LoginContainer)}>
       <Login handleSubmit={handleSubmit} loading={loading} error={error} />
       {showError && <Toaster icon="❗️" text={error} />}
     </div>

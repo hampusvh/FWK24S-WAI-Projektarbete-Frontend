@@ -8,12 +8,12 @@
 }
 
 .input:hover {
-  border-color: #9ca3af;
+  border-color: #a0a0a0;
 }
 
 .input:focus {
   outline: none;
-  border-color: #58a39a;
+  border-color: #8a8a8a;
 }
 
 .input:disabled {
