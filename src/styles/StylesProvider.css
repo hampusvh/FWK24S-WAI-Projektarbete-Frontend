@@ -1,0 +1,110 @@
+@font-face {
+    font-family: "Alan Sans";
+    src: url("/fonts/AlanSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Alan Sans";
+    src: url("/fonts/AlanSans-Regular.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Alan Sans";
+    src: url("/fonts/AlanSans-Regular.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Alan Sans";
+    src: url("/fonts/AlanSans-Regular.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* no colors or theme specific rules here */
+:root {
+    --font-family: "Alan Sans", Tahoma;
+    --font-size: 15px;
+}
+
+:root[data-theme="light"] {
+    --bg-color: #D9D9D9;
+    --text-color: #000;
+}
+
+:root[data-theme="dark"] {
+}
+
+/* opt-in transition only while toggling to avoid animating on page load */
+:root.theme-animating,
+:root.theme-animating * {
+    transition:
+        background-color 250ms ease,
+        color 250ms ease,
+        border-color 250ms ease,
+        fill 250ms ease,
+        stroke 250ms ease;
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    :root.theme-animating,
+    :root.theme-animating * {
+        transition: none !important;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input,
+button {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.errorBox {
+    background-color: #E43636;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 50%;
+    color: #FFF;
+    text-align: center;
+}
+
+/*-----Contact Page-----*/
+
+.contact-content {
+    max-width: 900px;
+    margin: 3rem auto 5rem;
+    padding: 0 1rem;
+}
+
+.contact-content h1 {
+    font-family: "Unbounded", var(--font-family);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    margin: 0 0 1rem;
+}

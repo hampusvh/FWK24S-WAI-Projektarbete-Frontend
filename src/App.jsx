@@ -10,6 +10,7 @@ function App() {
       </AppProvider>
     );
   }
+  
   return (
     <GoogleReCaptchaProvider reCaptchaKey={`${import.meta.env.VITE_RECAPTCHA_KEY}`}>
       <AppProvider>

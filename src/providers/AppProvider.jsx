@@ -4,6 +4,7 @@ import CsrfProvider from "./CsrfProvider";
 import ConsentProvider from "./ConsentProvider";
 import ConsentBanner from "../components/organisms/ConsentBanner/ConsentBanner";
 import { CookiesProvider } from "react-cookie";
+import { StylesProvider } from "../foundation/StylesProvider";
 
 const AppProvider = ({ children }) => (
   <BrowserRouter>
@@ -11,9 +12,11 @@ const AppProvider = ({ children }) => (
       <CsrfProvider>
         <ConsentProvider>
           <ApiProvider>
-            {children}
+            <StylesProvider>
+              {children}
             
-            <ConsentBanner />
+              <ConsentBanner />
+            </StylesProvider>
           </ApiProvider>
         </ConsentProvider>
       </CsrfProvider>
