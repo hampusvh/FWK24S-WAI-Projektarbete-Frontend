@@ -7,14 +7,13 @@ import Text from "../../atoms/Text/Text";
 const AgreementTerms = () => {
   const navigate = useNavigate();
   return (
-    <div>
-      <div className={styles.terms_card}>
-        <Text
-          as="h2"
-          variant="heading">
-          Terms of agreement
-        </Text>
-        <div className={styles.terms_text}>
+    <div className={styles.terms_card}>
+      <Text
+        as="h2"
+        variant="heading">
+        Terms of agreement
+      </Text>
+      <div className={styles.terms_text}>
           <Text
             as="p"
             variant="body">
@@ -44,14 +43,13 @@ const AgreementTerms = () => {
             breath, refresh the page, and remember - we’re all just humans
             behind keyboards trying our best.
           </Text>
-        </div>
-
-        <Button
-          variant="text"
-          onClick={() => navigate("/register")}>
-          Back
-        </Button>
       </div>
+
+      <Button
+        variant="text"
+        onClick={() => navigate("/register")}>
+        Back
+      </Button>
     </div>
   );
 };
