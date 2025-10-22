@@ -55,7 +55,7 @@ export const useAuth = () => {
   const handleDeleteUser = async (id) => {
     setLoading(true);
     setError(null);
-    try {
+    try {
       const data = await deleteUser(id);
       return data;
     } catch (err) {
@@ -75,6 +75,7 @@ export const useAuth = () => {
     } catch {
       setAuthorized(false);
     }
+    setLoading(false);
   };
 
   return { loading, error, setError, handleRegister, handleLogin, handleLogout, handleDeleteUser, authorized };
