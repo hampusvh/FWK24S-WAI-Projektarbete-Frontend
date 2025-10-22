@@ -4,6 +4,7 @@ import Register from "../pages/RegisterPage/RegisterPage";
 import HomePage from "../pages/HomePage/HomePage";
 import TermsPage from "../pages/TermsPage/TermsPage";
 import UserDashboard from "../pages/UserDashboardPage/UserDashboard";
+import ProtectedRoute from "./ProtectedRoute";
 
 const Router = () => (
   <Routes>
@@ -11,7 +12,9 @@ const Router = () => (
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
     <Route path="/terms" element={<TermsPage />} />
-    <Route path="/dashboard" element={<UserDashboard />} />
+    <Route element={<ProtectedRoute />}>
+      <Route path="/dashboard" element={<UserDashboard />} />
+    </Route>
   </Routes>
 );
 

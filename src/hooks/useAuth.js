@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import { useAuthService } from '../services/authService';
 
 export const useAuth = () => {
-  const { register, login, logout, deleteUser } = useAuthService();
-  const [user, setUser] = useState(null);
+  const { register, login, logout, deleteUser, verifyAuth } = useAuthService();
+  const [authorized, setAuthorized] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    checkAuth();
+  }, [])
 
   const handleRegister = async (email, username, password, phoneNumber, token, csrfToken) => {
     setLoading(true);
@@ -25,7 +29,6 @@ export const useAuth = () => {
     setError(null);
     try {
       const data = await logout(recaptchaToken, csrfToken);
-      setUser(null);
       sessionStorage.clear();
       return data;
     } catch (err) {
@@ -62,5 +65,17 @@ export const useAuth = () => {
     }
   };
 
-  return { loading, error, setError, handleRegister, handleLogin, handleLogout, handleDeleteUser };
+  const checkAuth = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await verifyAuth();
+      if (data) setAuthorized(true);
+      else setAuthorized(false);
+    } catch {
+      setAuthorized(false);
+    }
+  };
+
+  return { loading, error, setError, handleRegister, handleLogin, handleLogout, handleDeleteUser, authorized };
 };

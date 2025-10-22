@@ -9,6 +9,7 @@ export const useAuthService = () => {
   const login = (username, password, token, csrfToken) => auth.post("/auth/login", {username, password, token }, csrfToken);
   const logout = (recaptchaToken, csrfToken) => auth.post("/auth/logout", { recaptchaToken }, csrfToken);
   const deleteUser = (id) => auth.delete(`/auth/${id}`, csrf);
+  const verifyAuth = () => auth.get(`/auth/verify`, csrf);
 
-  return { register, login, logout, deleteUser };
-}
+  return { register, login, logout, deleteUser, verifyAuth };
+};
