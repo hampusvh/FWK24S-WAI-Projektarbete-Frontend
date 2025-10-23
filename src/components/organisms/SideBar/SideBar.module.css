@@ -1,3 +1,10 @@
 .sidebar_container {
   background-color: #2e2e2e;
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
