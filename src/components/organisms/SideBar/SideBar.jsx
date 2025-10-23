@@ -5,9 +5,9 @@ import LogoutButton from "../../molecules/LogoutButton/LogoutButton";
 
 const SideBar = () => {
   return (
-    <div className={styles.sidebar_container}>
+    <aside className={styles.sidebar}>
       <LogoutButton />
-    </div>
+    </aside>
   );
 };
 

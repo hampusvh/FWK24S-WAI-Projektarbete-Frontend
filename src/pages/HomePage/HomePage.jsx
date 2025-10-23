@@ -1,11 +1,10 @@
 import SideBar from "../../components/organisms/SideBar/SideBar";
-import LogoutButton from "../../components/molecules/LogoutButton/LogoutButton";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="home-page">
       <SideBar />
-      <LogoutButton />
+      <main className="main-content"></main>
     </div>
   );
 };
