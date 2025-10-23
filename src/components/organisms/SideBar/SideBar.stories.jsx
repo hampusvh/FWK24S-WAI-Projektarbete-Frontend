@@ -5,4 +5,6 @@ export default {
   component: SideBar,
 };
 
-export const Default = {};
+export const Default = {
+  args: {},
+};

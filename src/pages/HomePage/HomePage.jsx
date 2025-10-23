@@ -1,8 +1,10 @@
-import LogoutButton from "../../components/molecules/LogoutButton/LogoutButton";
+import SideBar from "../../components/organisms/SideBar/SideBar";
 
 const HomePage = () => {
   return (
-    <div>HomePage <LogoutButton /></div>
+    <div>
+      <SideBar />
+    </div>
   );
 };
 
