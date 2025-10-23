@@ -3,8 +3,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const CsrfContext = createContext();
 
 const CsrfProvider = ({ children }) => {
-    const [csrf, setCsrf] = useState(null);
-
     const AUTH_URL = import.meta.env.VITE_AUTH_API_URL;
 
     useEffect(() => {
@@ -34,13 +32,45 @@ const CsrfProvider = ({ children }) => {
         }
     }
 
+    const csrfRefreshRequest = async () => {
+        try {
+            const res = await fetch(`${AUTH_URL}/auth/csrf/refresh`, {
+                method: "GET",
+                headers: { 
+                    "Content-Type": "application/json" 
+                },
+                credentials: "include"
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.message || "Request failed");
+            }
+
+            return data;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    }
+
     const fetchCsrf = async () => {
         const token = await csrfRequest();
-        setCsrf(token.csrfToken);
+        localStorage.setItem("csrfToken", token.csrfToken);
+    }
+
+    const refreshCsrf = async () => {
+        const token = await csrfRefreshRequest();
+        localStorage.setItem("csrfToken", token.csrfToken);
+    }
+
+    const csrf = () => {
+        return localStorage.getItem("csrfToken") || "";
     }
 
     return (
-        <CsrfContext.Provider value={{ csrf, refreshCsrf: fetchCsrf }}>
+        <CsrfContext.Provider value={{ csrf, fetchCsrf, refreshCsrf }}>
             {children}
         </CsrfContext.Provider>
     );

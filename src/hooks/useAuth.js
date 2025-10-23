@@ -8,7 +8,7 @@ export const useAuth = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    checkAuth();
+    //checkAuth();
   }, [])
 
   const handleRegister = async (email, username, password, phoneNumber, token, csrfToken) => {

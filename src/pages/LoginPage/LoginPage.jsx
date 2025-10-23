@@ -31,7 +31,7 @@ const LoginPage = () => {
         return;
       }
     }
-    const result = await handleLogin(username, password, token, csrf);
+    const result = await handleLogin(username, password, token, csrf());
     !result ? setShowError(true) : navigate("/");
     setTimeout(() => setShowError(false), 4000);
   }

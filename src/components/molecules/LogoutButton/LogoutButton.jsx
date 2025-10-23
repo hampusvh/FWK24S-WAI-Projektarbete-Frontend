@@ -19,7 +19,7 @@ const LogoutButton = ({ variant = "primary", className = "" }) => {
         return;
       }
     }
-    await handleLogout(recaptchaToken, csrf);
+    await handleLogout(recaptchaToken, csrf());
     navigate("/login");
   };
 

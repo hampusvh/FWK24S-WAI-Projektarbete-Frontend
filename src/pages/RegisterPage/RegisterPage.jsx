@@ -16,7 +16,6 @@ const RegisterPage = () => {
   const { csrf } = useCsrf();
 
   const handleSubmit = async (formData) => {
-    console.log(csrf)
     const { email, username, password, phoneNumber } = formData;
     let token = null;
     if(import.meta.env.VITE_ENV == "production") {
@@ -31,7 +30,7 @@ const RegisterPage = () => {
         return;
       }
     }
-    const result = await handleRegister(email, username, password, phoneNumber, token, csrf);
+    const result = await handleRegister(email, username, password, phoneNumber, token, csrf());
     !result ? setShowError(true) : navigate("/login");
     setTimeout(() => setShowError(false), 4000);
   }
