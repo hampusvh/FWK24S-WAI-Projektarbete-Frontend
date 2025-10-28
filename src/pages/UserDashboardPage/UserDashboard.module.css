@@ -1,0 +1,9 @@
+.dashboard {
+display: flex;
+align-items: center;
+flex-direction: column;
+  margin-left: 220px;
+  background: #d9d9d9;
+  min-height: 100vh;
+  padding: 24px;
+}

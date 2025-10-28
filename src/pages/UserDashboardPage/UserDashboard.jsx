@@ -1,10 +1,11 @@
 import UserSettingsSection from "../../components/organisms/UserSettingsSection/UserSettingsSection";
 import { useAuth } from "../../hooks/useAuth";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import styles from "./UserDashboard.module.css";
 
 const UserDashboard = () => {
-  const { handleLogout, handleDeleteUser } = useAuth();
-  const [ id, setId ] = useState(null);
+  const { handleLogout, handleDeleteUser } = useAuth();
+  const [id, setId] = useState(null);
 
   useEffect(() => {
     const retrivedId = sessionStorage.getItem("id");
@@ -12,9 +13,9 @@ const UserDashboard = () => {
   }, [])
 
   return (
-    <div>
+    <div className={styles.dashboard}>
       <h1>Dashboard</h1>
-      <UserSettingsSection onLogout={handleLogout} onDelete={() => handleDeleteUser(id)}/>
+      <UserSettingsSection onLogout={handleLogout} onDelete={() => handleDeleteUser(id)} />
     </div>
   );
 };
