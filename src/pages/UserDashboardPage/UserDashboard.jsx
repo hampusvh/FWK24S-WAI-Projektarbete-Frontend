@@ -1,9 +1,9 @@
 import UserSettingsSection from "../../components/organisms/UserSettingsSection/UserSettingsSection";
 import { useAuth } from "../../hooks/useAuth";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const UserDashboard = () => {
-  const { handleLogout, handleDeleteUser } = useAuth();
+  const { handleLogout, handleDeleteUser } = useAuth();
   const [ id, setId ] = useState(null);
 
   useEffect(() => {
