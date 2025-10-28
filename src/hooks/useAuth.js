@@ -4,12 +4,9 @@ import { useAuthService } from '../services/authService';
 export const useAuth = () => {
   const { register, login, logout, deleteUser, verifyAuth } = useAuthService();
   const [authorized, setAuthorized] = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    //checkAuth();
-  }, [])
 
   const handleRegister = async (email, username, password, phoneNumber, token, csrfToken) => {
     setLoading(true);
@@ -66,11 +63,16 @@ export const useAuth = () => {
   };
 
   const checkAuth = async () => {
+    console.log("checkAuth")
     setLoading(true);
     setError(null);
     try {
       const data = await verifyAuth();
-      if (data) setAuthorized(true);
+      if (data) {
+        
+        setUser(data.user);
+        setAuthorized(true);
+      }
       else setAuthorized(false);
     } catch {
       setAuthorized(false);
@@ -78,5 +80,5 @@ export const useAuth = () => {
     setLoading(false);
   };
 
-  return { loading, error, setError, handleRegister, handleLogin, handleLogout, handleDeleteUser, authorized };
+  return { loading, error, setError, handleRegister, handleLogin, handleLogout, handleDeleteUser, authorized, checkAuth };
 };

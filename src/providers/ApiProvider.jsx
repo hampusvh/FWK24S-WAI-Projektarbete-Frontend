@@ -13,7 +13,7 @@ const ApiProvider = ({ children }) => {
   const request = async (base, endpoint, options = {}) => {
     try {
       let opts = {
-        credentials: import.meta.env.VITE_ENV == "development" ? "omit" : "include",
+        credentials: "include",
         ...options,
         headers: { "Content-Type": "application/json", ...(options.headers || {}), },
       };

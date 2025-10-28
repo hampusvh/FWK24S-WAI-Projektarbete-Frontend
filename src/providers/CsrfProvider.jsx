@@ -4,12 +4,9 @@ import { AUTH_API_URL } from "../config/config";
 export const CsrfContext = createContext();
 
 const CsrfProvider = ({ children }) => {
-    
-    
     const csrfRequest = async () => {
-        //${AUTH_API_URL}
         try {
-            const res = await fetch(`http://localhost:3001/auth/csrf`, {
+            const res = await fetch(`${AUTH_API_URL}/auth/csrf`, {
                 method: "GET",
                 headers: { 
                     "Content-Type": "application/json" 
@@ -37,7 +34,7 @@ const CsrfProvider = ({ children }) => {
 
     const csrfRefreshRequest = async () => {
         try {
-            const res = await fetch(`${AUTH_URL}/auth/csrf/refresh`, {
+            const res = await fetch(`${AUTH_API_URL}/auth/csrf/refresh`, {
                 method: "GET",
                 headers: { 
                     "Content-Type": "application/json" 
