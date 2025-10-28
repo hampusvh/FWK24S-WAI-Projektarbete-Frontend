@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./SideBar.module.css";
-
-import LogoutButton from "../../molecules/LogoutButton/LogoutButton";
+import Button from "../../atoms/Button/Button";
+import ProfileButton from "../../molecules/ProfileButton/ProfileButton";
 
 const SideBar = () => {
   return (
     <aside className={styles.sidebar}>
-      <LogoutButton />
+      <Button>Journal</Button>
+      <ProfileButton />
     </aside>
   );
 };
