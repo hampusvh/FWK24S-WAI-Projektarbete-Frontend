@@ -18,9 +18,10 @@ const Login = ({ handleSubmit, loading, error }) => {
     }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    handleSubmit(formData);
+    const result = await handleSubmit(formData);
+    return result;
   }
 
   return (

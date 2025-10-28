@@ -1,17 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { AUTH_API_URL } from "../config/config";
 
 export const CsrfContext = createContext();
 
 const CsrfProvider = ({ children }) => {
-    const AUTH_URL = import.meta.env.VITE_AUTH_API_URL;
-
-    useEffect(() => {
-        fetchCsrf();
-    }, []);
+    
     
     const csrfRequest = async () => {
+        //${AUTH_API_URL}
         try {
-            const res = await fetch(`${AUTH_URL}/auth/csrf`, {
+            const res = await fetch(`http://localhost:3001/auth/csrf`, {
                 method: "GET",
                 headers: { 
                     "Content-Type": "application/json" 
@@ -30,6 +28,11 @@ const CsrfProvider = ({ children }) => {
             console.error(err);
             throw err;
         }
+    }
+    
+    async function fetchCsrf() {
+       const token = await csrfRequest();
+        localStorage.setItem("csrfToken", token.csrfToken);
     }
 
     const csrfRefreshRequest = async () => {
@@ -55,10 +58,7 @@ const CsrfProvider = ({ children }) => {
         }
     }
 
-    const fetchCsrf = async () => {
-        const token = await csrfRequest();
-        localStorage.setItem("csrfToken", token.csrfToken);
-    }
+    
 
     const refreshCsrf = async () => {
         const token = await csrfRefreshRequest();
