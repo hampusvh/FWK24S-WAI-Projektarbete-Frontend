@@ -29,7 +29,7 @@ const UserDashboard = () => {
   }
 
   return (
-    <div>
+    <div className={styles.dashboard}>
       <h1>Dashboard</h1>
       <p>Welcome, {user.username}!</p>
       <UserSettingsSection onLogout={handleClick} onDelete={() => handleDeleteUser(user.id)}/>

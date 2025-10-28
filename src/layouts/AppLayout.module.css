@@ -1,5 +1,7 @@
 .layout {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
