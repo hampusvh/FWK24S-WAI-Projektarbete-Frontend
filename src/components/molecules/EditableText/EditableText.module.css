@@ -1,21 +1,28 @@
-.input {
+.editableText {
   width: 100%;
   padding: 0.6rem 0.8rem;
   border: 1px solid #d1d5db;
   border-radius: 6px;
+  font-size: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.input:hover {
+.editableTextLabel {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid transparent;
+    font-family: inherit;
+}
+
+.editableText:hover {
   border-color: #a0a0a0;
 }
 
-.input:focus {
+.editableText:focus {
   outline: none;
   border-color: #8a8a8a;
 }
 
-.input:disabled {
+.editableText:disabled {
   background-color: #f3f4f6;
   color: #9ca3af;
   cursor: not-allowed;
