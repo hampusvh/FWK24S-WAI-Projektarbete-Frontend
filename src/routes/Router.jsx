@@ -1,24 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import Login from "../pages/LoginPage/LoginPage";
-import Register from "../pages/RegisterPage/RegisterPage";
-import HomePage from "../pages/HomePage/HomePage";
-import TermsPage from "../pages/TermsPage/TermsPage";
-import UserDashboard from "../pages/UserDashboardPage/UserDashboard";
-import ProtectedRoute from "./ProtectedRoute";
-import AppLayout from "../layouts/AppLayout";
+import React from "react";
+import { createBrowserRouter } from "react-router-dom";
+import AuthGate from "./AuthGate";
 
-const Router = () => (
-  <Routes>
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
-    <Route path="/terms" element={<TermsPage />} />
-    <Route element={<AppLayout />}>
-      <Route element={<ProtectedRoute />}>
-        <Route index element={<HomePage />} />
-        <Route path="/dashboard" element={<UserDashboard />} />
-      </Route>
-    </Route>
-  </Routes>
-);
-
-export default Router;
+export const buildRouter = (routesConfig) => {
+    return createBrowserRouter(
+        routesConfig.map(({ path, element, layout, needLogin }) => ({
+            path,
+            element: (
+                <AuthGate needLogin={needLogin}>
+                    {layout ? React.cloneElement(layout, {}, element) : element}
+                </AuthGate>
+            ),
+        }))
+    );
+}

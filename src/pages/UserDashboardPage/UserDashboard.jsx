@@ -1,19 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import UserSettingsSection from "../../components/organisms/UserSettingsSection/UserSettingsSection";
-import { useAuth } from "../../hooks/useAuth";
-import { useEffect, useState } from 'react';
+import { useAuth as hookAuth } from "../../hooks/useAuth";
 import { useCsrf } from "../../providers/CsrfProvider";
 import { useRecaptcha } from "../../utils/recaptcha";
+import { useAuth } from "../../providers/AuthProvider";
 
 const UserDashboard = () => {
-  const { handleLogout, handleDeleteUser, user, checkAuth } = useAuth();
+  const { handleLogout, handleDeleteUser } = hookAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const { csrf } = useCsrf();
   const {getRecaptchaToken} = useRecaptcha();
-
-  useEffect(() => {
-    checkAuth();
-  }, []);
 
   const handleClick = async () => {
     let recaptchaToken = null;

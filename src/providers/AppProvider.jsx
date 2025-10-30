@@ -5,23 +5,24 @@ import ConsentProvider from "./ConsentProvider";
 import ConsentBanner from "../components/organisms/ConsentBanner/ConsentBanner";
 import { CookiesProvider } from "react-cookie";
 import { StylesProvider } from "../foundation/StylesProvider";
+import AuthProvider from "./AuthProvider";
 
 const AppProvider = ({ children }) => (
-  <BrowserRouter>
     <CookiesProvider>
       <CsrfProvider>
         <ConsentProvider>
           <ApiProvider>
-            <StylesProvider>
-              {children}
-            
-              <ConsentBanner />
-            </StylesProvider>
+            <AuthProvider>
+              <StylesProvider>
+                {children}
+              
+                <ConsentBanner />
+              </StylesProvider>
+            </AuthProvider>
           </ApiProvider>
         </ConsentProvider>
       </CsrfProvider>
     </CookiesProvider>
-  </BrowserRouter>
 );
 
 export default AppProvider;

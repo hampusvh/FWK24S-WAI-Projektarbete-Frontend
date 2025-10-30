@@ -8,13 +8,6 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-<<<<<<< HEAD
-=======
-  useEffect(() => {
-    checkAuth();
-  }, [])
-
->>>>>>> 2169ad6d6079c876c3f6f72bbcbcc72ec3cc0ec0
   const handleRegister = async (email, username, password, phoneNumber, token, csrfToken) => {
     setLoading(true);
     setError(null);
@@ -70,7 +63,6 @@ export const useAuth = () => {
   };
 
   const checkAuth = async () => {
-    console.log("checkAuth")
     setLoading(true);
     setError(null);
     try {
