@@ -15,6 +15,11 @@ const preview = {
       test: "todo"
     }
   },
+  decorators: [
+    (Story) => (
+      <Story />
+    ),
+  ]
 };
 
 export default preview;

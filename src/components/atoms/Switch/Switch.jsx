@@ -7,6 +7,7 @@ const Switch = ({ checked, onChange, label }) => {
     <label className={clsx(styles.switch)}>
       <input
         type="checkbox"
+        name={label}
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
       />

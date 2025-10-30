@@ -12,8 +12,8 @@ const AppLayout = ({ children }) => {
       <main className={styles.content}>
         {children}
       </main>
-      <footer>
-        <div className={styles.cookieSettings} onClick={() => setEditing(true)}>Cookie Settings</div>
+      <footer className={styles.footer}>
+        <div role="button" className={styles.cookieSettings} onClick={() => setEditing(true)}>Cookie Settings</div>
       </footer>
     </div>
   );

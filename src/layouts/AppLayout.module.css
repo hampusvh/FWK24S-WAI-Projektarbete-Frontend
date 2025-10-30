@@ -4,16 +4,16 @@
   gap: 20px;
   min-height: 100vh;
   box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.footer {
+  flex-basis: 100%;
 }
 
 .cookieSettings {
-  background-color: #202020;
-  color: #FFF;
-  padding: 10px;
-  border-radius: 6px;
   cursor: pointer;
 }
 
 .cookieSettings:hover {
-  background-color: #303030;
 }

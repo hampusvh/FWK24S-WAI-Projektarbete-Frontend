@@ -8,7 +8,7 @@ import Button from "../../atoms/Button/Button";
 
 const ConsentconsentBanner = ({ handleBack }) => {
     const [visible, setVisible] = useState(true);
-    const { consent, setConsent } = useConsent();
+    const { consent, setConsent, setEditing } = useConsent();
 
     const onChange = (values) => {
         let updated = {
@@ -24,6 +24,11 @@ const ConsentconsentBanner = ({ handleBack }) => {
             ...prev,
             ...updated
         }));
+    }
+
+    const handleClose = () => {
+        setVisible(false);
+        setEditing(false);
     }
 
     return (
@@ -99,7 +104,7 @@ const ConsentconsentBanner = ({ handleBack }) => {
 
             <div className={clsx(styles.optionButtons)}>
                 <Button onClick={handleBack}>Back</Button>
-                <Button onClick={() => setVisible(false)}>Close</Button>
+                <Button onClick={handleClose}>Close</Button>
             </div>
         </Banner>
     );

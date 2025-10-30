@@ -10,7 +10,7 @@ import ConsentPreferencesBanner from "../ConsentPreferencesBanner/ConsentPrefere
 const ConsentBanner = ({ contentText }) => {
     const [visible, setVisible] = useState(true);
     const [preferencesOpen, setPreferencesOpen] = useState(false);
-    const { consentAll } = useConsent();
+    const { consentAll, setEditing } = useConsent();
 
     const handleAccept = () => {
         console.log("User clicked Accept All");
@@ -29,7 +29,11 @@ const ConsentBanner = ({ contentText }) => {
         setPreferencesOpen(true);
     }
 
-    return visible && preferencesOpen ? <ConsentPreferencesBanner handleReject={handleReject} handleAccept={handleAccept} handleBack={() => setPreferencesOpen(false)} /> : (
+    const handleBack = () => {
+        setPreferencesOpen(false);
+    }
+
+    return visible && preferencesOpen ? <ConsentPreferencesBanner handleReject={handleReject} handleAccept={handleAccept} handleBack={handleBack} /> : (
         <Banner visible={visible}>
             <p>{contentText || 
                 `We collect and store your email address and phone number for account management purposes only. Your email is used for password recovery, and your phone number is used for two-factor authentication (2FA).\n

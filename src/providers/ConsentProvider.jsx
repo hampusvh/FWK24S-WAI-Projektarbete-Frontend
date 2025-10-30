@@ -40,9 +40,7 @@ const ConsentProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        setEditing(false);
-        
-        if(consent.timestamp == null) return;
+        if (consent.timestamp == null) return;
 
         const serialized = encodeURIComponent(JSON.stringify(consent));
         const current = getCookieByName("consent") || "";
@@ -67,6 +65,8 @@ const ConsentProvider = ({ children }) => {
             personalization: accept,
             security: accept
         });
+
+        setEditing(false);
     }
 
     return (
