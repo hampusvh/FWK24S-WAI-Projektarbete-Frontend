@@ -18,6 +18,7 @@ const DEFAULT_CONSENT = {
 
 const ConsentProvider = ({ children }) => {
     const [cookie, setCookie] = useCookies(["consent"]);
+    const [editing, setEditing] = useState(false);
 
     const getCookieByName = (name) => {
         const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -39,8 +40,10 @@ const ConsentProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        if(consent.timestamp == null) return;
+        setEditing(false);
         
+        if(consent.timestamp == null) return;
+
         const serialized = encodeURIComponent(JSON.stringify(consent));
         const current = getCookieByName("consent") || "";
         if (current !== serialized) {
@@ -67,9 +70,9 @@ const ConsentProvider = ({ children }) => {
     }
 
     return (
-        <ConsentContext.Provider value={{ consent, consentAll, setConsent }}>
+        <ConsentContext.Provider value={{ consent, consentAll, setConsent, setEditing }}>
             {children}
-            {!getCookieByName("consent") ? <ConsentBanner /> : <></>}
+            {(!getCookieByName("consent") || editing) ? <ConsentBanner /> : <></>}
         </ConsentContext.Provider>
     );
 }

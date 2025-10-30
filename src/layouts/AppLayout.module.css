@@ -5,3 +5,15 @@
   min-height: 100vh;
   box-sizing: border-box;
 }
+
+.cookieSettings {
+  background-color: #202020;
+  color: #FFF;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cookieSettings:hover {
+  background-color: #303030;
+}
