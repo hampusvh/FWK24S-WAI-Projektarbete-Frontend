@@ -2,7 +2,9 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
 
 const AuthGate = ({ needLogin, children }) => {
-    const { authorized } = useAuth();
+    const { loading, authorized } = useAuth();
+
+    if(loading) return;
 
     if(!authorized && needLogin) {
         return <Navigate to="/login" replace />; 

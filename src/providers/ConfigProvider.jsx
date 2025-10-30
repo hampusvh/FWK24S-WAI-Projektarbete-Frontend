@@ -10,8 +10,8 @@ export const ConfigContext = createContext();
 const ConfigProvider = ({ children }) => {
     const routesConfig = useMemo(() => [
         { path: "/", element: <HomePage />, layout: <AppLayout />, needLogin: true },
-        { path: "/login", element: <LoginPage />, layout: <AppLayout />, needLogin: false },
-        { path: "/register", element: <RegisterPage />, layout: <AppLayout />, needLogin: false },
+        { path: "/login", element: <LoginPage />, needLogin: false },
+        { path: "/register", element: <RegisterPage />, needLogin: false },
         { path: "/dashboard", element: <UserDashboard />, layout: <AppLayout />, needLogin: true },
     ], []);
 

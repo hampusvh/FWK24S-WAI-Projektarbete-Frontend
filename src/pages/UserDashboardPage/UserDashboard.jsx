@@ -4,7 +4,6 @@ import { useAuth as hookAuth } from "../../hooks/useAuth";
 import { useCsrf } from "../../providers/CsrfProvider";
 import { useRecaptcha } from "../../utils/recaptcha";
 import { useAuth } from "../../providers/AuthProvider";
-import { useEffect } from "react";
 import styles from "./UserDashboard.module.css";
 
 const UserDashboard = () => {
@@ -13,10 +12,6 @@ const UserDashboard = () => {
   const navigate = useNavigate();
   const { csrf } = useCsrf();
   const {getRecaptchaToken} = useRecaptcha();
-
-  useEffect(() => {
-    console.log("Hello World")
-  }, [])
 
   const handleClick = async () => {
     let recaptchaToken = null;

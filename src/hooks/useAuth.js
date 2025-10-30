@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useAuthService } from '../services/authService';
+import { useAuth as authCtx } from "../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
   const { register, login, logout, deleteUser, verifyAuth } = useAuthService();
+  const { clearAuth, setAuth } = authCtx();
   const [authorized, setAuthorized] = useState(null);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -26,7 +29,7 @@ export const useAuth = () => {
     setError(null);
     try {
       const data = await logout(recaptchaToken, csrfToken);
-      sessionStorage.clear();
+      clearAuth();
       return data;
     } catch (err) {
       setError(err.message);
@@ -40,7 +43,9 @@ export const useAuth = () => {
     setError(null);
     try {
       const data = await login(username, password, token, csrfToken);
-      sessionStorage.setItem("id", data.data.id);
+      if(data.success) {
+        setAuth(data.data.user);
+      }
       return data;
     } catch (err) {
       setError(err.message);
@@ -68,7 +73,6 @@ export const useAuth = () => {
     try {
       const data = await verifyAuth();
       if (data) {
-        
         setUser(data.user);
         setAuthorized(true);
       }
