@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import ConsentBanner from "../components/organisms/ConsentBanner/ConsentBanner";
 
 export const ConsentContext = createContext();
 
 const VERSION = "2025-10-21";
 const DEFAULT_CONSENT = {
     version: VERSION,
-    timestamp: new Date().toISOString(),
+    timestamp: null,
     necessary: false,
     functional: false,
     analytics: false,
@@ -38,6 +39,8 @@ const ConsentProvider = ({ children }) => {
     });
 
     useEffect(() => {
+        if(consent.timestamp == null) return;
+        
         const serialized = encodeURIComponent(JSON.stringify(consent));
         const current = getCookieByName("consent") || "";
         if (current !== serialized) {
@@ -66,6 +69,7 @@ const ConsentProvider = ({ children }) => {
     return (
         <ConsentContext.Provider value={{ consent, consentAll, setConsent }}>
             {children}
+            {!getCookieByName("consent") ? <ConsentBanner /> : <></>}
         </ConsentContext.Provider>
     );
 }
