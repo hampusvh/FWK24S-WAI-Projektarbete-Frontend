@@ -21,7 +21,7 @@ const EditableText = ({ name, placeholder, textValue, onChange }) => {
         value={textValue}
         onBlur={() => setEditable(false)}
         onChange={onChange}
-      /> : <div className={styles.editableTextLabel} onClick={() => setEditable(true)}>{textValue}</div>;
+      /> : <div className={styles.editableTextLabel} onClick={() => setEditable(true)}>{textValue || placeholder}</div>;
 }
 
 export default EditableText;

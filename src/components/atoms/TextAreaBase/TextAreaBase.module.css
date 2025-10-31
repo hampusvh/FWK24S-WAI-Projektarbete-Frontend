@@ -1,0 +1,18 @@
+.textAreaBase {
+  width: 100%;
+  min-height: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+  font: inherit;
+  line-height: 28px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  cursor: text;
+}
+
+.textAreaBase:empty::before {
+  content: attr(data-placeholder);
+  color: #aaa;
+  pointer-events: none;
+}

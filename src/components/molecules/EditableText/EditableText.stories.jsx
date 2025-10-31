@@ -4,13 +4,6 @@ import { useArgs } from 'storybook/preview-api';
 export default {
   title: "Molecules/EditableText",
   component: EditableText,
-};
-
-export const Default = {
-  args: {
-    textValue: "Hello World",
-    placeholder: "Hello World"
-  },
   render: function Render(args) {
     const [{ textValue }, updateArgs] = useArgs();
  
@@ -22,6 +15,20 @@ export const Default = {
         }
     }
  
-    return <EditableText textValue={textValue} onChange={onChange} placeholder={args.placeholder} />
+    return <EditableText textValue={textValue} onChange={onChange} {...args}/>;
   }
+};
+
+export const Default = {
+  args: {
+    textValue: "Hello World",
+    placeholder: "Hello World"
+  },
+};
+
+export const WithOnlyPlaceholderText = {
+  args: {
+    placeholder: "Placeholder text",
+    textValue: ""
+  },
 };
