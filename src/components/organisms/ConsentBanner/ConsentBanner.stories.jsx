@@ -21,7 +21,6 @@ const mockCookies = {
     analytics: false,
     marketing: false,
     personalization: false,
-    security: false,
   },
 };
 
@@ -34,7 +33,6 @@ const Cookies = () => {
       <pre>Analytics: {mockCookies.consent.analytics?.toString() || "false"}</pre>
       <pre>Marketing: {mockCookies.consent.marketing?.toString() || "false"}</pre>
       <pre>Personalization: {mockCookies.consent.personalization?.toString() || "false"}</pre>
-      <pre>Security: {mockCookies.consent.security?.toString() || "false"}</pre>
     </div>
   );
 }
@@ -52,10 +50,7 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  contentText: `We collect and store your email address and phone number for account management purposes only. Your email is used for password recovery, and your phone number is used for two-factor authentication (2FA).\n
-                We do not collect IP addresses, analytics data, or activity logs.\n
-                This site uses cookies and localStorage to provide essential functionality and maintain account security.\n
-                Please review and select your preference. Your choice will be respected and can be changed at any time.`,
+  contentText: `This website uses essential cookies for security, authentication, and to maintain your session while you browse. We also use session storage to ensure proper functionality during your visit. Optional cookies may be used for analytics or personalization if you consent.`,
 };
 
 export const TestInteraction = {
@@ -81,13 +76,6 @@ export const TestInteraction = {
 
     await waitFor(() => {
       expect(consentSwitch_MarketingCookies).toBeChecked();
-    });
-
-    const consentSwitch_SecurityCookies = await canvas.findByLabelText(/security cookies/i);
-    await userEvent.click(consentSwitch_SecurityCookies);
-
-    await waitFor(() => {
-      expect(consentSwitch_SecurityCookies).toBeChecked();
     });
 
     const consentSwitch_AnalyticsCookies = await canvas.findByLabelText(/analytics cookies/i);

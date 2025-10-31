@@ -7,6 +7,7 @@ import { useRecaptcha } from "../../utils/recaptcha";
 import { useCsrf } from '../../providers/CsrfProvider';
 import clsx from 'clsx';
 import styles from "./LoginPage.module.css";
+import { useConsent } from '../../providers/ConsentProvider';
 
 const LoginPage = () => {
   const [showError, setShowError] = useState(false);
@@ -14,6 +15,7 @@ const LoginPage = () => {
   const {getRecaptchaToken} = useRecaptcha()
   const navigate = useNavigate();
   const { csrf } = useCsrf();
+  const { setEditing} = useConsent();
 
   const handleSubmit = async (formData) => {
     const { username, password } = formData;
@@ -46,6 +48,9 @@ const LoginPage = () => {
     <div className={clsx(styles.LoginContainer)}>
       <Login handleSubmit={handleSubmit} loading={loading} error={error} />
       {showError && <Toaster icon="❗️" text={error} />}
+      <footer className={styles.footer}>
+        <div role="button" className={styles.cookieSettings} onClick={() => setEditing(true)}>Cookie Settings</div>
+      </footer>
     </div>
   );
 };

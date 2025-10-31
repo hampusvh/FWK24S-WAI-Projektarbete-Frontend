@@ -17,7 +17,6 @@ const ConsentconsentBanner = ({ handleBack }) => {
             ...(values.analytics != null && { analytics:  values.analytics }),
             ...(values.marketing != null && { marketing:  values.marketing }),
             ...(values.personalization != null && { personalization:  values.personalization }),
-            ...(values.security != null && { security:  values.security }),
         };
 
         setConsent(prev => ({
@@ -38,7 +37,7 @@ const ConsentconsentBanner = ({ handleBack }) => {
                 <div>
                     <Switch
                         checked={consent.necessary || false}
-                        onChange={(val) => onChange({ necessary: val })}
+                        onChange={(val) => onChange({ necessary: true })}
                         label="Necessary cookies"
                     />
                     <p className={clsx(styles.Description)}>
@@ -87,17 +86,6 @@ const ConsentconsentBanner = ({ handleBack }) => {
                     />
                     <p className={clsx(styles.Description)}>
                     Tailor content and recommendations based on your interests.
-                    </p>
-                </div>
-
-                <div>
-                    <Switch
-                        checked={consent.security || false}
-                        onChange={(val) => onChange({ security: val })}
-                        label="Security cookies"
-                    />
-                    <p className={clsx(styles.Description)}>
-                    Help protect your account and detect fraudulent activity.
                     </p>
                 </div>
             </div>

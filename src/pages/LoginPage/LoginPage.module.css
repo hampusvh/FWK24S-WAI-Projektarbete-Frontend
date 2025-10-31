@@ -4,5 +4,21 @@
     height: 100vh;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
+    gap: 20px;
+}
+
+.footer {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.footer div {
+    cursor: pointer;
+}
+
+.footer div:hover {
+    color: #5b5b5b;
 }

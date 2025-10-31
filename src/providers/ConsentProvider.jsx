@@ -8,12 +8,11 @@ const VERSION = "2025-10-21";
 const DEFAULT_CONSENT = {
     version: VERSION,
     timestamp: null,
-    necessary: false,
+    necessary: true,
     functional: false,
     analytics: false,
     marketing: false,
     personalization: false,
-    security: false,
 };
 
 const ConsentProvider = ({ children }) => {
@@ -63,7 +62,6 @@ const ConsentProvider = ({ children }) => {
             analytics: accept,
             marketing: accept,
             personalization: accept,
-            security: accept
         });
 
         setEditing(false);

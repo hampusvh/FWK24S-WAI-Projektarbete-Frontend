@@ -36,10 +36,7 @@ const ConsentBanner = ({ contentText }) => {
     return visible && preferencesOpen ? <ConsentPreferencesBanner handleReject={handleReject} handleAccept={handleAccept} handleBack={handleBack} /> : (
         <Banner visible={visible}>
             <p>{contentText || 
-                `We collect and store your email address and phone number for account management purposes only. Your email is used for password recovery, and your phone number is used for two-factor authentication (2FA).\n
-                We do not collect IP addresses, analytics data, or activity logs.\n
-                This site uses cookies and localStorage to provide essential functionality and maintain account security.\n
-                Please review and select your preference. Your choice will be respected and can be changed at any time.`}</p>
+                `This website uses essential cookies for security, authentication, and to maintain your session while you browse. We also use session storage to ensure proper functionality during your visit. Optional cookies may be used for analytics or personalization if you consent.`}</p>
 
             <div className={clsx(styles.optionButtons)}>
                 <Button className={clsx(styles.acceptAll)} onClick={handleAccept}>Accept All</Button>
