@@ -10,6 +10,12 @@
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
+.button svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
 .button:hover:not(:disabled) {
   background-color: #3a3a3a;
 }
@@ -25,4 +31,8 @@
 
 .warning:hover {
   background-color: rgb(204, 14, 14) !important;
+}
+
+.warning svg {
+  fill: #fff;
 }

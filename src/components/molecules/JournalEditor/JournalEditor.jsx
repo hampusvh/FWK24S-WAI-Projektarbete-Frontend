@@ -5,7 +5,6 @@ import styles from "./JournalEditor.module.css";
 const JournalEditor = () => {
   return (
     <div className={styles.JournalEditor}>
-      
       <PaperBackground >
         <div className={styles.TextAreaBaseWrapper} >
           <TextAreaBase placeholder="Skriv här..." />
