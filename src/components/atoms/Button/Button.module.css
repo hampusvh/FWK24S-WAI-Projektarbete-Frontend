@@ -16,7 +16,7 @@
   vertical-align: middle;
 }
 
-.button:hover:not(:disabled) {
+.button:hover {
   background-color: #3a3a3a;
 }
 
@@ -30,9 +30,26 @@
 }
 
 .warning:hover {
-  background-color: rgb(204, 14, 14) !important;
+  background-color: rgb(204, 14, 14);
 }
 
 .warning svg {
   fill: #fff;
+}
+
+.iconButton {
+  background: none;
+  padding: 0;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.iconButton:hover {
+  border-radius: 50%;
+  background: none;
 }

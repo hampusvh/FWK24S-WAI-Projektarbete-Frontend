@@ -7,9 +7,9 @@ export default {
   render: () => {
     return (
       <JournalControls
-        handleNewEntry={action("New entry")}
-        handleSave={action("Save entry")}
-        handleDelete={action("Delete entry")}
+        onNew={action("New entry")}
+        onSave={action("Save entry")}
+        onDelete={action("Delete entry")}
       />
     )
   }

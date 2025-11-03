@@ -1,4 +1,14 @@
 .JournalControlsContainer {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  background-color: #F6F6F6;
+  border-radius: 6px 6px 0 0;
+}
+
+.JournalControlsContainer svg {
+  color: #757575;
+}
+
+.JournalControlsContainer svg:hover {
+  color: #989898;
 }
