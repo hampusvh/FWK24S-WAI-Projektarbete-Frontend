@@ -11,7 +11,7 @@ const AuthGate = ({ needLogin, children }) => {
     }
 
     if(authorized && !needLogin) {
-        return <Navigate to="/dashboard" replace />; 
+        return <Navigate to="/" replace />; 
     }
 
     return children;
