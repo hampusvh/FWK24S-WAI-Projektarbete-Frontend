@@ -1,11 +1,12 @@
 .layout {
   display: flex;
   flex-direction: row;
-  gap: 20px;
   min-height: 100vh;
   box-sizing: border-box;
   flex-wrap: wrap;
 }
+
+.content { flex: 1; }
 
 .footer {
   flex-basis: 100%;
