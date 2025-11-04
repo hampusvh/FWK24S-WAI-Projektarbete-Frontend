@@ -22,28 +22,33 @@ const SettingsForm = ({ handleSubmit, onDelete }) => {
   return (
     <div className={styles.settingsPage}>
       <h1>Settings</h1>
-      <form className={styles.form} onSubmit={(e) => handleSubmit(e, formData)}>
-        <label>Change email</label>
-        <Input
-          name="email"
-          type="text"
-          placeholder="Edit email"
-          value={formData.email}
-          onChange={onChange}
-        />
-        <label>Change phone number</label>
-        <Input
-          name="phoneNumber"
-          type="text"
-          placeholder="Edit phone number"
-          value={formData.phoneNumber}
-          onChange={onChange}
-        />
-        <Button type="submit">Save</Button>
-      </form>
-      <Button type="button" onClick={onDelete} variant="warning">
-        Delete account
-      </Button>
+      <div className={styles.card}>
+        <form
+          className={styles.form}
+          onSubmit={(e) => handleSubmit(e, formData)}
+        >
+          <label>Change email</label>
+          <Input
+            name="email"
+            type="text"
+            placeholder="Edit email"
+            value={formData.email}
+            onChange={onChange}
+          />
+          <label>Change phone number</label>
+          <Input
+            name="phoneNumber"
+            type="text"
+            placeholder="Edit phone number"
+            value={formData.phoneNumber}
+            onChange={onChange}
+          />
+          <Button type="submit">Save</Button>
+        </form>
+        <Button type="button" onClick={onDelete} variant="warning">
+          Delete account
+        </Button>
+      </div>
     </div>
   );
 };
