@@ -1,30 +1,41 @@
-# FWK24S-WAI Projektarbete Frontend
+# FWK24S-WAI Projektarbete - Frontend
 
 ## Starta projektet lokalt
 
-### Initiera projektet
+### 1. Klona projektet
 
-1. Klona ner projektet.
+Kör följande kommando i terminalen:
 
-Skriv i terminalen t.ex:
 ```bash
 git clone https://github.com/hampusvh/FWK24S-WAI-Projektarbete-Frontend.git
 ```
 
-2. Ladda ner beroenden:
+### 2. Installera beroenden
+
+Navigera in i projektmappen och installera nödvändiga paket:
+
 ```bash
 npm install
 ```
 
-3. Skapa .env i root t.ex:
-```md
+### 3. Skapa miljöfil (.env)
+
+Skapa en `.env`-fil i projektets rotkatalog med följande innehåll:
+
+```bash
 VITE_AUTH_API_URL="http://localhost:3001"
 VITE_DOMAIN_API_URL="http://localhost:3002"
-VITE_RECAPTCHA_KEY = aplication key
+VITE_RECAPTCHA_KEY="application key"
 ```
-  **OBS! Ändra porter om nödvändigt!**
+
+> **Tips:** Justera portarna vid behov beroende på din lokala
+> backend-konfiguration.
+
+---
 
 ## Starta Storybook
+
+För att starta Storybook-miljön:
 
 ```bash
 npm run storybook
