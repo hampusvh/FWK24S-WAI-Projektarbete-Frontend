@@ -15,7 +15,6 @@ const EditProfile = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e, formData) => {
-    console.log(1);
     e.preventDefault();
     const { email, phoneNumber } = formData;
     let token = null;
