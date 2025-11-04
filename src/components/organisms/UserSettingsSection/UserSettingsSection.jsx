@@ -3,8 +3,7 @@ import Card from "../../atoms/Card/Card";
 import styles from "./UserSettingsSection.module.css";
 import { Link } from "react-router-dom";
 
-//Skriv onDelete i settingsForm
-const UserSettingsSection = ({ onEdit, onLogout, onDelete }) => {
+const UserSettingsSection = ({ onEdit, onLogout }) => {
   return (
     <section>
       <Card className={styles.container}>

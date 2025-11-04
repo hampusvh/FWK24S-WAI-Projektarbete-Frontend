@@ -7,30 +7,30 @@ import { useAuth } from "../../providers/AuthProvider";
 import styles from "./UserDashboard.module.css";
 
 const UserDashboard = () => {
-  const { handleLogout, handleDeleteUser } = hookAuth();
+  const { handleLogout } = hookAuth();
   const { user } = useAuth();
   const navigate = useNavigate();
   const { csrf } = useCsrf();
-  const {getRecaptchaToken} = useRecaptcha();
+  const { getRecaptchaToken } = useRecaptcha();
 
   const handleClick = async () => {
     let recaptchaToken = null;
-    if(import.meta.env.VITE_ENV == "production") {
-      recaptchaToken = await getRecaptchaToken('register')
-      if(!recaptchaToken){
+    if (import.meta.env.VITE_ENV == "production") {
+      recaptchaToken = await getRecaptchaToken("register");
+      if (!recaptchaToken) {
         console.error("reCAPTCHA verification failed");
         return;
       }
     }
     await handleLogout(recaptchaToken, csrf());
     navigate("/login");
-  }
+  };
 
   return (
     <div className={styles.dashboard}>
       <h1>Dashboard</h1>
       <p>Welcome, {user.username}!</p>
-      <UserSettingsSection onLogout={handleClick} onDelete={() => handleDeleteUser(user.id)}/>
+      <UserSettingsSection onLogout={handleClick} />
     </div>
   );
 };

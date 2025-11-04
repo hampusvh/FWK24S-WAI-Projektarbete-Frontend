@@ -4,7 +4,7 @@ import Button from "../../atoms/Button/Button";
 import { useAuth } from "../../../providers/AuthProvider";
 import styles from "./SettingsForm.module.css";
 
-const SettingsForm = ({ handleSubmit }) => {
+const SettingsForm = ({ handleSubmit, onDelete }) => {
   const { user } = useAuth();
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +41,7 @@ const SettingsForm = ({ handleSubmit }) => {
         />
         <Button type="submit">Save</Button>
       </form>
-      <Button onClick={onDelete} variant="warning">
+      <Button type="button" onClick={onDelete} variant="warning">
         Delete account
       </Button>
     </div>
