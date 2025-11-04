@@ -4,7 +4,7 @@ import Button from "../../atoms/Button/Button";
 import { useAuth } from "../../../providers/AuthProvider";
 import styles from "./SettingsForm.module.css";
 
-const SettingsForm = ({handleSubmit}) => {
+const SettingsForm = ({ handleSubmit }) => {
   const { user } = useAuth();
   const onChange = (e) => {
     const { name, value } = e.target;
