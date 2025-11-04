@@ -28,6 +28,7 @@ const ConsentconsentBanner = ({ handleBack }) => {
     const handleClose = () => {
         setVisible(false);
         setEditing(false);
+        setConsent(prev => ({...prev, timestamp: new Date().toISOString()}));
     }
 
     return (
