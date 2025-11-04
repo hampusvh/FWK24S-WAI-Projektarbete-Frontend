@@ -7,8 +7,10 @@ const JournalHeader = ({ onSave, onNew, onDelete }) => {
   return (
     <div className={styles.JournalHeaderContainer}>
       <div className={styles.TitleContainer}>
-        <EditableText placeholder="Title" />
-        <p className={styles.Date}>{(new Date).toLocaleDateString()}</p>
+        <div className={styles.Title}> 
+          <EditableText placeholder="Enter your title..." /> 
+        </div>
+        <p className={styles.Date}>{formatDate(new Date())}</p>
       </div>
       <div className={styles.JournalButtonsContainer}>
         <Button onClick={onSave} label='save entry'>Save</Button>
@@ -20,4 +22,9 @@ const JournalHeader = ({ onSave, onNew, onDelete }) => {
     </div>
   )
 }
+
+function formatDate(date) {
+  return date.toLocaleDateString("sv-SE"); 
+}
+
 export default JournalHeader
