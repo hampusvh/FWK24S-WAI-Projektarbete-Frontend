@@ -53,6 +53,8 @@ const ApiProvider = ({ children }) => {
       get: (url, csrfToken = "") => request(DOMAIN_URL, url, { method: "GET", headers: { "X-CSRF-Token": csrfToken } }),
       post: (url, body, csrfToken = "") =>
         request(DOMAIN_URL, url, { method: "POST", body: JSON.stringify(body), headers: { "X-CSRF-Token": csrfToken } }),
+          patch: (url, body, csrfToken = "") =>
+        request(DOMAIN_URL, url, { method: "PATCH", body: JSON.stringify(body), headers: { "X-CSRF-Token": csrfToken } }),
     },
   };
 

@@ -3,7 +3,7 @@ import { useApi } from "../providers/ApiProvider";
 import { useCsrf } from "../providers/CsrfProvider";
 
 export const useAuthService = () => {
-  const { auth } = useApi();
+  const { auth, domain } = useApi();
   const { csrf } = useCsrf();
 
   const register = (email, username, password, phoneNumber, token, csrfToken) => auth.post("/auth/register", { email, username, password, phoneNumber, token }, csrfToken);
@@ -11,6 +11,7 @@ export const useAuthService = () => {
   const logout = (recaptchaToken, csrfToken) => auth.post("/auth/logout", { recaptchaToken }, csrfToken);
   const deleteUser = (id) => auth.delete(`/auth/${id}`, csrf());
   const verifyAuth = useCallback(() => auth.get(`/auth/verify`, csrf()), []);
+  const editUser = (email, phoneNumber, token, csrfToken) => domain.patch("/user", { email, phoneNumber, token }, csrfToken);
 
-  return { register, login, logout, deleteUser, verifyAuth };
+  return { register, login, logout, editUser, deleteUser, verifyAuth };
 };

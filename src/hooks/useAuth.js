@@ -54,6 +54,22 @@ export const useAuth = () => {
     }
   };
 
+    const handleEditUser = async (email, phoneNumber, token, csrfToken) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await editUser(username, password, token, csrfToken);
+      if(data.success) {
+        setAuth(data.data.user);
+      }
+      return data;
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleDeleteUser = async (id) => {
     setLoading(true);
     setError(null);
@@ -83,5 +99,5 @@ export const useAuth = () => {
     setLoading(false);
   };
 
-  return { loading, error, setError, handleRegister, handleLogin, handleLogout, handleDeleteUser, authorized, checkAuth };
+  return { loading, error, setError, handleRegister, handleLogin, handleLogout, handleEditUser, handleDeleteUser, authorized, checkAuth };
 };
