@@ -11,7 +11,7 @@ export const useAuthService = () => {
   const logout = (recaptchaToken, csrfToken) => auth.post("/auth/logout", { recaptchaToken }, csrfToken);
   const deleteUser = (id) => auth.delete(`/auth/${id}`, csrf());
   const verifyAuth = useCallback(() => auth.get(`/auth/verify`, csrf()), []);
-  const editUser = (email, phoneNumber, token, csrfToken) => domain.patch("/user", { email, phoneNumber, token }, csrfToken);
+  const editUser = (email, phoneNumber, token, csrfToken) => auth.patch("/auth/user", { email, phoneNumber, token }, csrfToken);
 
   return { register, login, logout, editUser, deleteUser, verifyAuth };
 };

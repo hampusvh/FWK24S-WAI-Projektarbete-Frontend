@@ -41,6 +41,9 @@ const SettingsForm = ({ handleSubmit }) => {
         />
         <Button type="submit">Save</Button>
       </form>
+      <Button onClick={onDelete} variant="warning">
+        Delete account
+      </Button>
     </div>
   );
 };

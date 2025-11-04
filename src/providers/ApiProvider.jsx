@@ -15,19 +15,22 @@ const ApiProvider = ({ children }) => {
       let opts = {
         credentials: "include",
         ...options,
-        headers: { "Content-Type": "application/json", ...(options.headers || {}), },
+        headers: {
+          "Content-Type": "application/json",
+          ...(options.headers || {}),
+        },
       };
 
       let res = await fetch(`${base}${endpoint}`, opts);
 
       // access token expired
-      if(res.status === 401) {
+      if (res.status === 401) {
         await refreshCsrf();
 
         res = await fetch(`${base}${endpoint}`, opts);
       }
 
-      if(res.status === 403) {
+      if (res.status === 403) {
         await fetchCsrf();
 
         res = await fetch(`${base}${endpoint}`, opts);
@@ -44,17 +47,47 @@ const ApiProvider = ({ children }) => {
 
   const api = {
     auth: {
-      get: (url, csrfToken = "") => request(AUTH_URL, url, { method: "GET", headers: { "X-CSRF-Token": csrfToken } }),
+      get: (url, csrfToken = "") =>
+        request(AUTH_URL, url, {
+          method: "GET",
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
       post: (url, body, csrfToken = "") =>
-        request(AUTH_URL, url, { method: "POST", body: JSON.stringify(body), headers: { "X-CSRF-Token": csrfToken } }),
-      delete: (url, csrfToken = "") => request(AUTH_URL, url, { method: "DELETE", headers: { "X-CSRF-Token": csrfToken } }),
+        request(AUTH_URL, url, {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
+      delete: (url, csrfToken = "") =>
+        request(AUTH_URL, url, {
+          method: "DELETE",
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
+      patch: (url, body, csrfToken = "") =>
+        request(AUTH_URL, url, {
+          method: "PATCH",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
     },
     domain: {
-      get: (url, csrfToken = "") => request(DOMAIN_URL, url, { method: "GET", headers: { "X-CSRF-Token": csrfToken } }),
+      get: (url, csrfToken = "") =>
+        request(DOMAIN_URL, url, {
+          method: "GET",
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
       post: (url, body, csrfToken = "") =>
-        request(DOMAIN_URL, url, { method: "POST", body: JSON.stringify(body), headers: { "X-CSRF-Token": csrfToken } }),
-          patch: (url, body, csrfToken = "") =>
-        request(DOMAIN_URL, url, { method: "PATCH", body: JSON.stringify(body), headers: { "X-CSRF-Token": csrfToken } }),
+        request(DOMAIN_URL, url, {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
+      patch: (url, body, csrfToken = "") =>
+        request(DOMAIN_URL, url, {
+          method: "PATCH",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
     },
   };
 

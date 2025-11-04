@@ -4,7 +4,7 @@ import { useAuth as authCtx } from "../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
-  const { register, login, logout, deleteUser, verifyAuth } = useAuthService();
+  const { register, login, logout, deleteUser, editUser, verifyAuth } = useAuthService();
   const { clearAuth, setAuth } = authCtx();
   const [authorized, setAuthorized] = useState(null);
   const [user, setUser] = useState(null);
@@ -55,19 +55,9 @@ export const useAuth = () => {
   };
 
     const handleEditUser = async (email, phoneNumber, token, csrfToken) => {
-    setLoading(true);
     setError(null);
-    try {
-      const data = await editUser(username, password, token, csrfToken);
-      if(data.success) {
-        setAuth(data.data.user);
-      }
+      const data = await editUser(email, phoneNumber, token, csrfToken);
       return data;
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
   };
 
   const handleDeleteUser = async (id) => {
