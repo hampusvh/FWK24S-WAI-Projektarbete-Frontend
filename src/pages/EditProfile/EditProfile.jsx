@@ -4,7 +4,7 @@ import SettingsForm from "../../components/organisms/SettingsForm/SettingsForm";
 import { useRecaptcha } from "../../utils/recaptcha";
 import { useAuth } from "../../hooks/useAuth";
 import { useCsrf } from "../../providers/CsrfProvider";
-
+import Toaster from "../../components/organisms/Toaster/Toaster";
 import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {

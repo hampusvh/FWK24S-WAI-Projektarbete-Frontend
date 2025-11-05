@@ -1,8 +1,24 @@
 .dashboard {
-display: flex;
-align-items: center;
-flex-direction: column;
-  background: #d9d9d9;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10vh auto;
+  padding: 16px;
+  text-align: center;
+}
+
+.dashboard h1 { margin-bottom: 12px; }
+.dashboard p  { margin-bottom: 12px; }
+
+
+.card {
+  background: #ffffff;
+  border-radius: 10px;
   padding: 24px;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
 }

@@ -2,5 +2,15 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 200px;
+  width: 420px;
+}
+
+.container a { 
+  display: block; 
+}
+
+
+.container button {
+  width: 100%;
+  box-sizing: border-box;
 }
