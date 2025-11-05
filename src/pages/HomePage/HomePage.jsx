@@ -5,9 +5,7 @@ import styles from "./HomePage.module.css";
 const HomePage = () => {
   return (
     <div className={styles.homePage}>
-      <main className={styles.mainContent}>
-        <JournalSheet />
-      </main>
+      <JournalSheet />
     </div>
   );
 };
