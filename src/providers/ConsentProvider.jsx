@@ -57,7 +57,7 @@ const ConsentProvider = ({ children }) => {
         setConsent({
             version: VERSION,
             timestamp: new Date().toISOString(),
-            necessary: accept,
+            necessary: true,
             functional: accept,
             analytics: accept,
             marketing: accept,
