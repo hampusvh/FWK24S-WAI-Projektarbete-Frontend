@@ -9,15 +9,15 @@ import AuthProvider from "./AuthProvider";
 const AppProvider = ({ children }) => (
     <CookiesProvider>
       <CsrfProvider>
-        <ConsentProvider>
-          <ApiProvider>
+        <ApiProvider>
+          <ConsentProvider>
             <AuthProvider>
               <StylesProvider>
                 {children}
               </StylesProvider>
             </AuthProvider>
-          </ApiProvider>
-        </ConsentProvider>
+          </ConsentProvider>
+        </ApiProvider>
       </CsrfProvider>
     </CookiesProvider>
 );

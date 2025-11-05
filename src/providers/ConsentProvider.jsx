@@ -1,12 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import ConsentBanner from "../components/organisms/ConsentBanner/ConsentBanner";
+import { useGdpr } from "../hooks/useGdpr";
 
 export const ConsentContext = createContext();
 
 const VERSION = "2025-10-21";
 const DEFAULT_CONSENT = {
     version: VERSION,
+    status: "pending",
     timestamp: null,
     necessary: true,
     functional: false,
@@ -18,6 +20,7 @@ const DEFAULT_CONSENT = {
 const ConsentProvider = ({ children }) => {
     const [cookie, setCookie] = useCookies(["consent"]);
     const [editing, setEditing] = useState(false);
+    const { handleStoreConsent } = useGdpr();
 
     const getCookieByName = (name) => {
         const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -50,6 +53,8 @@ const ConsentProvider = ({ children }) => {
                 secure: import.meta.env.VITE_ENV === "production",
                 maxAge: 31536000,
             });
+
+            storeConsentDb(consent);
         }
     }, [consent]);
 
@@ -57,6 +62,7 @@ const ConsentProvider = ({ children }) => {
         setConsent({
             version: VERSION,
             timestamp: new Date().toISOString(),
+            status: accept ? "accept" : "reject",
             necessary: true,
             functional: accept,
             analytics: accept,
@@ -65,6 +71,19 @@ const ConsentProvider = ({ children }) => {
         });
 
         setEditing(false);
+    }
+
+    const storeConsentDb = async (consent) => {
+        let token = null;
+        if(import.meta.env.VITE_ENV == "production") {
+            token = await getRecaptchaToken('register')
+            if(!token){
+                console.error("reCAPTCHA verification failed");
+                return;
+            }
+        }
+
+        await handleStoreConsent(consent, token);
     }
 
     return (

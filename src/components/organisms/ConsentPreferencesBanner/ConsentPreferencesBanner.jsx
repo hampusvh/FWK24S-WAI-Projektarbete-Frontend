@@ -21,14 +21,15 @@ const ConsentconsentBanner = ({ handleBack }) => {
 
         setConsent(prev => ({
             ...prev,
-            ...updated
+            ...updated,
+            status: "custom",
         }));
     }
 
     const handleClose = () => {
         setVisible(false);
         setEditing(false);
-        setConsent(prev => ({...prev, timestamp: new Date().toISOString()}));
+        setConsent(prev => ({...prev, status: "custom", timestamp: new Date().toISOString()}));
     }
 
     return (
