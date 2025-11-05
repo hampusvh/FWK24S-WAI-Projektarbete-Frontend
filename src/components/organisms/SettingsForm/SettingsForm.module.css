@@ -8,14 +8,6 @@
   flex-direction: column;
 }
 
-.settingsPage h1 {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  margin: 0 0 12px 0;
-  color: #111827;
-  text-align: center;
-}
-
 .card {
   background: #ffffff;
   border: 1px solid #e5e7eb;
