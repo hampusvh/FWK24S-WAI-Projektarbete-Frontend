@@ -10,7 +10,7 @@ const UserSettingsSection = ({ onEdit, onLogout }) => {
         <Link to="/settings">
           <Button onClick={onEdit}>Edit Profile</Button>
         </Link>
-        <Button onClick={onLogout}>Logout</Button>
+        <Button onClick={onLogout} variant="warning">Logout</Button>
       </Card>
     </section>
   );

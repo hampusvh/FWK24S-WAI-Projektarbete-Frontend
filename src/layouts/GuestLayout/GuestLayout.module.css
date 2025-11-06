@@ -1,0 +1,51 @@
+.GuestLayout {
+  display: flex;
+  justify-content: row;
+  width: 100vw;
+  height: 100vh;
+  background-color: #222;
+  overflow: hidden;
+  
+}
+
+.hero {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  color: #b9b9b9;
+  text-align: center;
+  
+}
+
+.svgWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero h1 {
+  color: #fff;
+  font-size: 2.5em;
+  margin: 0 0 50px;
+  padding: 0;
+  max-width: 50%;
+  text-align: center;
+}
+
+.hero svg {
+  margin-bottom: -200px;
+}
+
+.hero .introText {
+  text-align: center;
+}
+
+.main {
+  background-color: #FFF;
+  flex: 1;
+  border-radius: 60px 0 0 60px;
+  padding: 60px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}

@@ -1,7 +1,7 @@
 import { CookiesProvider, useCookies } from "react-cookie";
 import ConsentProvider from "../../../providers/ConsentProvider";
 import ConsentBanner from "./ConsentBanner";
-import AppLayout from "../../../layouts/AppLayout";
+import AppLayout from "../../../layouts/AppLayout/AppLayout";
 import withRouter from "../../../decorators/withRouter";
 import { expect } from "storybook/test";
 import { waitFor } from "storybook/internal/test";

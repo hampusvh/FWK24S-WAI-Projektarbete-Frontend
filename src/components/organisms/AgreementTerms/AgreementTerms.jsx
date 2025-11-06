@@ -1,53 +1,73 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AgreementTerms.module.css";
 import { useNavigate } from "react-router-dom";
 import Button from "../../atoms/Button/Button";
 import Text from "../../atoms/Text/Text";
+import { useGdpr } from "../../../hooks/useGdpr";
 
 const AgreementTerms = () => {
   const navigate = useNavigate();
+  const [termsData, setTermsData] = useState(null);
+  const { handleTransparency } = useGdpr();
+
+  useEffect(() => {
+    const fetchTerms = async () => {
+      const data = await handleTransparency();
+      setTermsData(data);
+    };
+    fetchTerms();
+  }, [handleTransparency]);
+
+  if (!termsData) return <div className={styles.loading}>Loading...</div>;
+
   return (
     <div className={styles.terms_card}>
-      <Text
-        as="h2"
-        variant="heading">
+      <Text as="h2" variant="heading">
         Terms of agreement
       </Text>
+
       <div className={styles.terms_text}>
-          <Text
-            as="p"
-            variant="body">
-            By accessing or registering for this service, you acknowledge that
-            you have read, understood, and with admirable confidence, accepted
-            the terms below. The platform is provided as-is, without any
-            promises of eternal uptime or bug-free perfection, though we do our
-            best to keep things civilized and functional.
-          </Text>
+        <Text as="p" variant="body">
+          {termsData.summary}
+        </Text>
 
-          <Text
-            as="p"
-            variant="body">
-            We collect only the information we actually need to make this thing
-            work. We do not sell, barter, or secretly whisper your data to
-            anyone. Some anonymous statistics may be gathered to help improve
-            performance or reassure us that someone, somewhere, is indeed using
-            this app.
-          </Text>
+        {termsData.dataCategories.map((category, idx) => (
+          <div key={idx} className={styles.category}>
+            <Text as="h3" variant="subheading">
+              {category.type}
+            </Text>
+            <Text as="p" variant="body">
+              {category.reason}
+            </Text>
+            <div className={styles.meta}>
+              <div className={styles.metaItem}>
+                <Text as="span" variant="caption">
+                  Duration:&nbsp;
+                </Text>
+                <Text as="span" variant="caption" className={styles.metaValue}>
+                  {category.duration}
+                </Text>
+              </div>
+              <div className={styles.metaItem}>
+                <Text as="span" variant="caption">
+                  Legal basis:&nbsp;
+                </Text>
+                <Text as="span" variant="caption" className={styles.metaValue}>
+                  {category.legal}
+                </Text>
+              </div>
+            </div>
+          </div>
+        ))}
 
-          <Text
-            as="p"
-            variant="body">
-            By continuing, you agree to use the service responsibly, treat other
-            users with basic human decency, and not attempt to break things just
-            to see what happens. Should anything go wrong, please take a deep
-            breath, refresh the page, and remember - we’re all just humans
-            behind keyboards trying our best.
-          </Text>
+        <Text as="p" variant="body">
+          For any questions or concerns regarding these terms, please reach out
+          to our support team. We're here to help and ensure you have a clear
+          understanding of how we handle your data.
+        </Text>
       </div>
 
-      <Button
-        variant="text"
-        onClick={() => navigate("/register")}>
+      <Button variant="text" onClick={() => navigate("/register")}>
         Back
       </Button>
     </div>

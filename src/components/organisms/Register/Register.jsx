@@ -62,7 +62,7 @@ const Register = ({ handleSubmit = () => console.log("default click from registe
 
       <div className="agreement-terms">By registering, you hereby accept to the <Link to="/terms">terms of agreement</Link></div>
 
-      <div>Already have an account? <Link to="/login">Login</Link></div>
+      <div>Already have an account? <Link to="/login">Login</Link>.</div>
 
     </form>
   )

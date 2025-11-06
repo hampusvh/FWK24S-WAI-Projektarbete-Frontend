@@ -35,8 +35,10 @@ const RegisterPage = () => {
     setTimeout(() => setShowError(false), 4000);
   }
 
+
   return (
     <div className={clsx(styles.RegisterContainer)}>
+      <h1>Register Account</h1>
       <Register handleSubmit={handleSubmit} loading={loading} error={error} />
       {showError && <Toaster icon="❗️" text={error} />}
     </div>
