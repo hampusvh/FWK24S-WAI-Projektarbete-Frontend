@@ -1,9 +1,22 @@
 .sidebar {
-  background-color: #2e2e2e;
-  width: 220px;
+  background-color: #222;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 10px;
+}
+
+.sidebarItem {
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebarItem:hover, .active {
+  background-color: #333;
+  color: #FFF;
 }
