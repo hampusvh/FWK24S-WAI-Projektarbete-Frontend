@@ -9,43 +9,57 @@ const AgreementTerms = () => {
   const navigate = useNavigate();
   const [termsData, setTermsData] = useState(null);
   const { handleTransparency } = useGdpr();
+
   useEffect(() => {
     const fetchTerms = async () => {
       const data = await handleTransparency();
-
       setTermsData(data);
     };
-
     fetchTerms();
-  }, []);
+  }, [handleTransparency]);
 
-  if (!termsData) return <div>Loading...</div>;
+  if (!termsData) return <div className={styles.loading}>Loading...</div>;
 
   return (
     <div className={styles.terms_card}>
       <Text as="h2" variant="heading">
         Terms of agreement
       </Text>
+
       <div className={styles.terms_text}>
         <Text as="p" variant="body">
           {termsData.summary}
         </Text>
-        {termsData.dataCategories.map((category, index) => (
-          <div key={index}>
+
+        {termsData.dataCategories.map((category, idx) => (
+          <div key={idx} className={styles.category}>
             <Text as="h3" variant="subheading">
               {category.type}
             </Text>
             <Text as="p" variant="body">
               {category.reason}
             </Text>
-            <Text as="p" variant="body">
-              Duration: {category.duration}
-            </Text>
-            <Text as="p" variant="body">
-              Legal basis: {category.legal}
-            </Text>
+            <div className={styles.meta}>
+              <div className={styles.metaItem}>
+                <Text as="span" variant="caption">
+                  Duration:&nbsp;
+                </Text>
+                <Text as="span" variant="caption" className={styles.metaValue}>
+                  {category.duration}
+                </Text>
+              </div>
+              <div className={styles.metaItem}>
+                <Text as="span" variant="caption">
+                  Legal basis:&nbsp;
+                </Text>
+                <Text as="span" variant="caption" className={styles.metaValue}>
+                  {category.legal}
+                </Text>
+              </div>
+            </div>
           </div>
         ))}
+
         <Text as="p" variant="body">
           For any questions or concerns regarding these terms, please reach out
           to our support team. We're here to help and ensure you have a clear

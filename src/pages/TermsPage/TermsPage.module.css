@@ -1,8 +1,5 @@
 .TermsContainer {
-    width: 30%;
-    margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  padding: 28px 16px;
+  display: flex;
+  justify-content: center;
 }
