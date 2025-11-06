@@ -16,7 +16,7 @@ const SideBar = () => {
         <span>Journal</span>
       </Link>
 
-      <Link to="/dashboard" className={styles.sidebarItem + " " + (location.pathname == "/settings" ? styles.active : "")}>
+      <Link to="/settings" className={styles.sidebarItem + " " + (location.pathname == "/settings" ? styles.active : "")}>
         <UserIcon size="46" />
         <span>Account</span>
       </Link>
