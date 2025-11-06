@@ -1,7 +1,7 @@
 /* YTTERSTA LAYOUTEN ÄGER HÖJD & PLACERING */
 .layout {
   display: grid;
-  grid-template-columns: 220px 1fr;          /* sidebar | content  */
+  grid-template-columns: auto 1fr;          /* sidebar | content  */
   grid-template-rows: 1fr auto;              /* innehåll | footer  */
   grid-template-areas:
     "sidebar content"
@@ -12,7 +12,7 @@
 
 /* KOPPLA BARNEN VIA TAGGAR (funkar fint med CSS-modules) */
 .layout > aside { grid-area: sidebar; }
-.layout > main  { grid-area: content; min-width: 0; padding: 24px 16px; }
+.layout > main  { grid-area: content; min-width: 0; padding: 30px; }
 .layout > footer{ grid-area: footer;  }
 
 /* Valfritt: enkel footer-stil så den syns men inte “flyter” */

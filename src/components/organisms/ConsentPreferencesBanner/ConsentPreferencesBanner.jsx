@@ -22,11 +22,6 @@ const ConsentPreferencesBanner = ({ handleBack }) => {
     let updated = {
       ...(values.necessary != null && { necessary: values.necessary }),
       ...(values.functional != null && { functional: values.functional }),
-      ...(values.analytics != null && { analytics: values.analytics }),
-      ...(values.marketing != null && { marketing: values.marketing }),
-      ...(values.personalization != null && {
-        personalization: values.personalization,
-      }),
     };
 
     setConsent((prev) => ({
@@ -81,7 +76,7 @@ const ConsentPreferencesBanner = ({ handleBack }) => {
         {(transparency?.dataCategories ?? []).map((category) => (
           <div key={category.code}>
             <Switch
-              checked={consent[category.code] || false}
+              checked={(category.code == "necessary" ? true : consent[category.code]) || false}
               onChange={(val) =>
                 onChange({
                   [category.code]: category.code == "necessary" ? true : val,
