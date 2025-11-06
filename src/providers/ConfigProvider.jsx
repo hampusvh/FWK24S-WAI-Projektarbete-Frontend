@@ -2,6 +2,7 @@ import { createContext, useContext, useMemo } from "react";
 import AppLayout from "../layouts/AppLayout";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import TermsPage from "../pages/TermsPage/TermsPage";
 import UserDashboard from "../pages/UserDashboardPage/UserDashboard";
 import HomePage from "../pages/HomePage/HomePage";
 import EditProfile from "../pages/EditProfile/EditProfile";
@@ -16,17 +17,17 @@ const ConfigProvider = ({ children }) => {
         { path: "/settings", element: <EditProfile />, layout: <AppLayout/>, needLogin: true}
     ], []);
 
-    return (
-        <ConfigContext.Provider value={{ routesConfig }}>
-            {children}
-        </ConfigContext.Provider>
-    );
-}
+  return (
+    <ConfigContext.Provider value={{ routesConfig }}>
+      {children}
+    </ConfigContext.Provider>
+  );
+};
 
 export default ConfigProvider;
 
 export const useConfig = () => {
-    const ctx = useContext(ConfigContext);
-    if (!ctx) throw new Error("useConfig must be used within ConfigContext!");
-    return ctx;
-}
+  const ctx = useContext(ConfigContext);
+  if (!ctx) throw new Error("useConfig must be used within ConfigContext!");
+  return ctx;
+};
