@@ -16,24 +16,86 @@
 
 .Header {
   display: flex;
-  width: 100%;
-  border-bottom: 1px dotted lightgray;
-  margin-right: -20px;
-  margin-left: -20px;
-  margin-top: -10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin: -10px -10px 0 -10px;
+  padding: 5px;
+  align-items: center;
 }
 
 .Header button {
   justify-self: end;
-  color: rgb(71, 71, 71);
+  color: currentColor;
+  padding: 15px !important;
+}
+
+.dialogTitle {
+  margin-top: 0;
 }
 
 .Body {
-  margin-bottom: 1rem;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Body input[type="password"] {
+  margin-top: 10px;
 }
 
 .Footer {
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
+}
+
+.Body input,
+.Body textarea,
+.Body select {
+  border: 1px solid #e5e7eb !important;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 10px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.Body input::placeholder,
+.Body textarea::placeholder {
+  color: #6b7280;
+}
+
+/* Focus ring — crisp and accessible */
+.Body input:focus-visible,
+.Body textarea:focus-visible,
+.Body select:focus-visible {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+/* Disabled state */
+.Body input:disabled,
+.Body textarea:disabled,
+.Body select:disabled {
+  background: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Native validation feedback without extra HTML */
+.Body input:invalid,
+.Body textarea:invalid,
+.Body select:invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.14);
+}
+.Body input:valid,
+.Body textarea:valid,
+.Body select:valid {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.Body :where(input, button) {
+  width: 100%;
+  box-sizing: border-box;
 }

@@ -15,9 +15,10 @@ const Dialog = ({ onClose, title, children, actions }) => {
         <header className={styles.Header}>
           <Button onClick={onClose} variant="iconButton">✕</Button>
         </header>
-        {title && <h2 id="dialog-title">{title}</h2>}
+        
         <div className={styles.Body}>
-        {children}
+          {title && <h2 id="dialog-title" className={styles.dialogTitle}>{title}</h2>}
+          {children}
         </div>
 
         {actions && <footer className={styles.Footer}>{actions}</footer>}

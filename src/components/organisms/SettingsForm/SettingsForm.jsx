@@ -92,8 +92,8 @@ const SettingsForm = ({ handleSubmit, onDelete, onRequestData, showRequestDialog
           }
         >
           <p>Enter your password to confirm the request.</p>
-          <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <label><b>Password</b></label>
+          <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
           {error && <p>{error}</p>}
         </Dialog>
       }
