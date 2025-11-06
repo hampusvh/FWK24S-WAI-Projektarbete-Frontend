@@ -68,7 +68,7 @@ body {
     box-sizing: border-box;
 }
 
-h1, b {
+h1, h2, b{
     color: #000;
 }
 
@@ -87,6 +87,8 @@ button {
     font-family: inherit;
     color: inherit;
     text-decoration: inherit;
+    padding: 15px !important;
+    border-radius: 6px !important;
 }
 
 .errorBox {

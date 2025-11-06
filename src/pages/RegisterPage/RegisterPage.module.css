@@ -1,7 +1,6 @@
 .RegisterContainer {
     width: 75%;
-    margin: 0 auto;
-    height: 100vh;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

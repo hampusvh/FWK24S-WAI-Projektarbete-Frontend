@@ -23,12 +23,6 @@
   width: fit-content;
 }
 
-.form label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #374151;
-}
-
 .form input {
   border: 1px solid #e5e7eb;
   background: #ffffff;
@@ -63,7 +57,6 @@
 }
 
 .settingsPage h2 {
-  margin: 0;
 }
 
 .settingsPage p {

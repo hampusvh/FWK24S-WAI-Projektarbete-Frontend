@@ -1,4 +1,5 @@
 import JournalWritingSVG from "../../components/atoms/Icons/JournalWritingSVG/JournalWritingSVG";
+import Logo from "../../components/atoms/Logo/Logo";
 import styles from "./GuestLayout.module.css";
 
 const GuestLayout = ({ children }) => {
@@ -14,6 +15,7 @@ const GuestLayout = ({ children }) => {
       </div>
 
       <div className={styles.main}>
+        <Logo />
         {children}
       </div>
     </div>
