@@ -13,7 +13,6 @@ const ConfigProvider = ({ children }) => {
         { path: "/", element: <HomePage />, layout: <AppLayout />, needLogin: true },
         { path: "/login", element: <LoginPage />, needLogin: false },
         { path: "/register", element: <RegisterPage />, needLogin: false },
-        { path: "/dashboard", element: <UserDashboard />, layout: <AppLayout />, needLogin: true },
         { path: "/settings", element: <EditProfile />, layout: <AppLayout/>, needLogin: true}
     ], []);
 

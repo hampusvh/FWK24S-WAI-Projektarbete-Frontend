@@ -12,7 +12,7 @@
 
 /* KOPPLA BARNEN VIA TAGGAR (funkar fint med CSS-modules) */
 .layout > aside { grid-area: sidebar; }
-.layout > main  { grid-area: content; min-width: 0; padding: 24px 16px; }
+.layout > main  { grid-area: content; min-width: 0; padding: 30px; }
 .layout > footer{ grid-area: footer;  }
 
 /* Valfritt: enkel footer-stil så den syns men inte “flyter” */
