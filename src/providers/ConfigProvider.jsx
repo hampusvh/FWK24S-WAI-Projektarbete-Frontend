@@ -10,12 +10,26 @@ import EditProfile from "../pages/EditProfile/EditProfile";
 export const ConfigContext = createContext();
 
 const ConfigProvider = ({ children }) => {
-    const routesConfig = useMemo(() => [
-        { path: "/", element: <HomePage />, layout: <AppLayout />, needLogin: true },
-        { path: "/login", element: <LoginPage />, needLogin: false },
-        { path: "/register", element: <RegisterPage />, needLogin: false },
-        { path: "/settings", element: <EditProfile />, layout: <AppLayout/>, needLogin: true}
-    ], []);
+  const routesConfig = useMemo(
+    () => [
+      {
+        path: "/",
+        element: <HomePage />,
+        layout: <AppLayout />,
+        needLogin: true,
+      },
+      { path: "/login", element: <LoginPage />, needLogin: false },
+      { path: "/register", element: <RegisterPage />, needLogin: false },
+      { path: "/terms", element: <TermsPage />, needLogin: false },
+      {
+        path: "/settings",
+        element: <EditProfile />,
+        layout: <AppLayout />,
+        needLogin: true,
+      },
+    ],
+    []
+  );
 
   return (
     <ConfigContext.Provider value={{ routesConfig }}>
