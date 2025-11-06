@@ -26,13 +26,11 @@ const ApiProvider = ({ children }) => {
       // access token expired
       if (res.status === 401) {
         await refreshCsrf();
-
         res = await fetch(`${base}${endpoint}`, opts);
       }
 
       if (res.status === 403) {
         await fetchCsrf();
-
         res = await fetch(`${base}${endpoint}`, opts);
       }
 
@@ -43,6 +41,36 @@ const ApiProvider = ({ children }) => {
       console.error(err);
       throw err;
     }
+  };
+
+  const requestBinary = async (base, endpoint, options = {}) => {
+    let opts = {
+      credentials: "include",
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...(options.headers || {}),
+      },
+    };
+
+    let res = await fetch(`${base}${endpoint}`, opts);
+
+    if (res.status === 401) {
+      await refreshCsrf();
+      res = await fetch(`${base}${endpoint}`, opts);
+    }
+
+    if (res.status === 403) {
+      await fetchCsrf();
+      res = await fetch(`${base}${endpoint}`, opts);
+    }
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      throw new Error(errorText || "Binary request failed");
+    }
+
+    return await res.blob();
   };
 
   const api = {
@@ -104,6 +132,16 @@ const ApiProvider = ({ children }) => {
       patch: (url, body, csrfToken = "") =>
         request(AUTH_URL, url, {
           method: "PATCH",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
+    },
+    binary: {
+      get: (url, headers = {}) =>
+        requestBinary(AUTH_URL, url, { method: "GET", headers }),
+      post: (url, body, headers = {}, csrfToken) =>
+        requestBinary(AUTH_URL, url, {
+          method: "POST",
           body: JSON.stringify(body),
           headers: { "X-CSRF-Token": csrfToken },
         }),

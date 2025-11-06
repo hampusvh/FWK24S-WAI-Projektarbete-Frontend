@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./EditProfile.module.css";
 import SettingsForm from "../../components/organisms/SettingsForm/SettingsForm";
 import { useRecaptcha } from "../../utils/recaptcha";
 import { useAuth } from "../../hooks/useAuth";
 import { useCsrf } from "../../providers/CsrfProvider";
-import Toaster from "../../components/organisms/Toaster/Toaster";
 import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
@@ -13,6 +12,14 @@ const EditProfile = () => {
   const { loading, error, setError, handleLogin, handleEditUser } = useAuth();
   const { csrf } = useCsrf();
   const navigate = useNavigate();
+  const [showRequestDialog, setShowRequestDialog] = useState(false);
+  const [disableRequestButton, setDisableRequestButton] = useState(true);
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (password.length > 7) setDisableRequestButton(false);
+    else setDisableRequestButton(true)
+  }, [password]);
 
   const handleSubmit = async (e, formData) => {
     e.preventDefault();
@@ -43,9 +50,20 @@ const EditProfile = () => {
     return true;
   };
 
+  const onRequestData = async () => {
+    await downloadUserData(password);
+  };
+
   return (
     <div className={styles.settingsPage}>
-      <SettingsForm handleSubmit={handleSubmit} />
+      <SettingsForm
+        handleSubmit={handleSubmit}
+        showRequestDialog={showRequestDialog}
+        setShowRequestDialog={setShowRequestDialog}
+        disableRequestButton={disableRequestButton}
+        password={password}
+        setPassword={setPassword}
+      />
     </div>
   );
 };

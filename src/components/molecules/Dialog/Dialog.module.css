@@ -1,0 +1,39 @@
+.Overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.Dialog {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+}
+
+.Header {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px dotted lightgray;
+  margin-right: -20px;
+  margin-left: -20px;
+  margin-top: -10px;
+}
+
+.Header button {
+  justify-self: end;
+  color: rgb(71, 71, 71);
+}
+
+.Body {
+  margin-bottom: 1rem;
+}
+
+.Footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}

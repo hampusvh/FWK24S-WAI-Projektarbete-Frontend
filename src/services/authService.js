@@ -3,7 +3,7 @@ import { useApi } from "../providers/ApiProvider";
 import { useCsrf } from "../providers/CsrfProvider";
 
 export const useAuthService = () => {
-  const { auth, domain } = useApi();
+  const { auth } = useApi();
   const { csrf } = useCsrf();
 
   const register = (email, username, password, phoneNumber, token, csrfToken) => auth.post("/auth/register", { email, username, password, phoneNumber, token }, csrfToken);

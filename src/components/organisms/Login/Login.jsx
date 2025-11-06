@@ -4,7 +4,7 @@ import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import styles from "./Login.module.css";
 
-const Login = ({ handleSubmit, loading, error }) => {
+const Login = ({ handleSubmit }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: ""
