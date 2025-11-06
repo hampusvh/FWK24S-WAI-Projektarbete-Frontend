@@ -61,10 +61,12 @@ export const useAuth = () => {
   };
 
   const handleDeleteUser = async (id) => {
+    console.log(id)
     setLoading(true);
     setError(null);
     try {
       const data = await deleteUser(id);
+      clearAuth()
       return data;
     } catch (err) {
       setError(err.message);

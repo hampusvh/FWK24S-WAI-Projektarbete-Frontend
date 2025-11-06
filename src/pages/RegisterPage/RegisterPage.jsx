@@ -35,6 +35,7 @@ const RegisterPage = () => {
     setTimeout(() => setShowError(false), 4000);
   }
 
+
   return (
     <div className={clsx(styles.RegisterContainer)}>
       <Register handleSubmit={handleSubmit} loading={loading} error={error} />
