@@ -44,7 +44,7 @@ const Login = ({ handleSubmit, loading, error }) => {
 
       <Button type="submit">Login</Button>
 
-          <div>Don't have an account? <Link to="/register">Register</Link></div>
+          <div>Don't have an account? <Link to="/register">Register an account.</Link></div>
 
     </form>
   );

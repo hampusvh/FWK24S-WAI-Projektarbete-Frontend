@@ -46,11 +46,9 @@ const LoginPage = () => {
 
   return (
     <div className={clsx(styles.LoginContainer)}>
+      <h1>Sign In</h1>
       <Login handleSubmit={handleSubmit} loading={loading} error={error} />
       {showError && <Toaster icon="❗️" text={error} />}
-      <footer className={styles.footer}>
-        <div role="button" className={styles.cookieSettings} onClick={() => setEditing(true)}>Cookie Settings</div>
-      </footer>
     </div>
   );
 };

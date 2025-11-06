@@ -38,6 +38,7 @@ const RegisterPage = () => {
 
   return (
     <div className={clsx(styles.RegisterContainer)}>
+      <h1>Register Account</h1>
       <Register handleSubmit={handleSubmit} loading={loading} error={error} />
       {showError && <Toaster icon="❗️" text={error} />}
     </div>
