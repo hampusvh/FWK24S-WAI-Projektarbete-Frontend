@@ -1,19 +1,8 @@
 .terms_card {
-  max-width: 820px;
   width: 100%;
   margin: 20px auto;
   padding: 18px;
-  background: #fff;
   border-radius: 6px;
-  border: 1px solid #eef2f6;
-  box-sizing: border-box;
-}
-
-.terms_card h2 {
-  text-align: center;
-  margin: 0 0 50px;
-  font-weight: 600;
-  color: #0f172a;
 }
 
 .terms_text {
@@ -27,26 +16,20 @@
 .category {
   margin: 6px 0;
   padding: 8px 0;
-  border-left: 3px solid rgba(15, 23, 42, 0.03);
 }
 
-.terms_text h3 {
-  margin: 6px 0 4px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #111827;
+.terms_text h2 {
+  font-weight: bold;
 }
 
 .terms_text p {
   margin: 0 0 8px;
-  color: #374151;
   line-height: 1.5;
   font-size: 0.98rem;
 }
 
 .meta {
   margin-top: 6px;
-  color: #6b7280;
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
@@ -60,7 +43,6 @@
 }
 
 .metaValue {
-  color: #111827;
   font-weight: 500;
 }
 
@@ -73,5 +55,4 @@
 .loading {
   padding: 14px;
   text-align: center;
-  color: #6b7280;
 }

@@ -22,7 +22,7 @@ const AgreementTerms = () => {
 
   return (
     <div className={styles.terms_card}>
-      <Text as="h2" variant="heading">
+      <Text as="h1" variant="heading">
         Terms of agreement
       </Text>
 
@@ -33,7 +33,7 @@ const AgreementTerms = () => {
 
         {termsData.dataCategories.map((category, idx) => (
           <div key={idx} className={styles.category}>
-            <Text as="h3" variant="subheading">
+            <Text as="h2" variant="subheading">
               {category.type}
             </Text>
             <Text as="p" variant="body">
