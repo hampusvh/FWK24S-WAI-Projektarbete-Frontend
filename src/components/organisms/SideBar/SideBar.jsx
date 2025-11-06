@@ -3,18 +3,22 @@ import styles from "./SideBar.module.css";
 import Button from "../../atoms/Button/Button";
 import ProfileButton from "../../molecules/ProfileButton/ProfileButton";
 import OpenBookIcon from "../../atoms/Icons/OpenBookIcon/OpenBookIcon";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import UserIcon from "../../atoms/Icons/UserIcon/UserIcon";
 
 const SideBar = () => {
+  const location = useLocation();
+
   return (
     <aside className={styles.sidebar}>
-      <Link to="/" className={styles.sidebarItem}>
+      <Link to="/" className={styles.sidebarItem + " " + (location.pathname == "/" ? styles.active : "")}>
         <OpenBookIcon size="46" />
+        <span>Journal</span>
       </Link>
 
-      <Link to="/dashboard" className={styles.sidebarItem}>
+      <Link to="/dashboard" className={styles.sidebarItem + " " + (location.pathname == "/settings" ? styles.active : "")}>
         <UserIcon size="46" />
+        <span>Account</span>
       </Link>
     </aside>
   );
