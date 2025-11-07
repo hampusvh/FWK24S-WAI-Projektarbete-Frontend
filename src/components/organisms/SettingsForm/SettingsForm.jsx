@@ -11,7 +11,16 @@ import LineBreak from "../../atoms/LineBreak/LineBreak";
 import Dialog from "../../molecules/Dialog/Dialog";
 import { useExport } from "../../../hooks/useExport";
 
-const SettingsForm = ({ handleSubmit, onDelete, onRequestData, showRequestDialog, setShowRequestDialog, disableRequestButton, password, setPassword }) => {
+const SettingsForm = ({
+  handleSubmit,
+  onDelete,
+  onRequestData,
+  showRequestDialog,
+  setShowRequestDialog,
+  disableRequestButton,
+  password,
+  setPassword,
+}) => {
   const { user } = useAuth();
   const { error, downloadUserData } = useExport();
   const { csrf } = useCsrf();
@@ -48,55 +57,78 @@ const SettingsForm = ({ handleSubmit, onDelete, onRequestData, showRequestDialog
   return (
     <div className={styles.settingsPage}>
       <h1>Settings</h1>
-      <form
-        className={styles.form}
-        onSubmit={(e) => handleSubmit(e, formData)}
-      >
-        <label><b>Email</b></label>
-        <label>Used primarily to restore password if forgotten.</label>
-        <Input
-          name="email"
-          type="text"
-          placeholder="Edit email"
-          value={formData.email}
-          onChange={onChange}
-        />
-        <br></br>
-        <label><b>Phone Number</b></label>
-        <label>Used for 2FA if enabled.</label>
-        <Input
-          name="phoneNumber"
-          type="text"
-          placeholder="Edit phone number"
-          value={formData.phoneNumber}
-          onChange={onChange}
-        />
-        <br></br>
+      <form className={styles.form} onSubmit={(e) => handleSubmit(e, formData)}>
+        <div className={styles.field}>
+          <label htmlFor="email">
+            <b>Email</b>
+          </label>
+          <p className={styles.help}>
+            Used primarily to restore password if forgotten.
+          </p>
+          <Input
+            id="email"
+            name="email"
+            type="text"
+            placeholder="Edit email"
+            value={formData.email}
+            onChange={onChange}
+          />
+        </div>
+
+        <div className={styles.field}>
+          <label htmlFor="phoneNumber">
+            <b>Phone Number</b>
+          </label>
+          <p className={styles.help}>Used for 2FA if enabled.</p>
+          <Input
+            id="phoneNumber"
+            name="phoneNumber"
+            type="text"
+            placeholder="Edit phone number"
+            value={formData.phoneNumber}
+            onChange={onChange}
+          />
+        </div>
         <Button type="submit">Save</Button>
       </form>
       <LineBreak />
       <h2>Request your data</h2>
-      <p>You can request a copy of all personal data associated with your account.</p>
-      <Button onClick={() => setShowRequestDialog(true)}>
-        Request Data
-      </Button>
-      {showRequestDialog &&
+      <p>
+        You can request a copy of all personal data associated with your
+        account.
+      </p>
+      <Button onClick={() => setShowRequestDialog(true)}>Request Data</Button>
+      {showRequestDialog && (
         <Dialog
           title="Do you want to request data?"
           onClose={() => setShowRequestDialog(false)}
           actions={
             <>
-              <Button onClick={() => setShowRequestDialog(false)}>Cancel</Button>
-              <Button onClick={() => downloadUserData(password)} disabled={disableRequestButton}>Request data</Button>
+              <Button onClick={() => setShowRequestDialog(false)}>
+                Cancel
+              </Button>
+              <Button
+                onClick={() => downloadUserData(password)}
+                disabled={disableRequestButton}
+              >
+                Request data
+              </Button>
             </>
           }
         >
           <p>Enter your password to confirm the request.</p>
-          <label><b>Password</b></label>
-          <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+          <label>
+            <b>Password</b>
+          </label>
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
           {error && <p>{error}</p>}
         </Dialog>
-      }
+      )}
       <div className={styles.logoutSection}>
         <Button type="button" onClick={onClickLogout}>
           Logout
@@ -105,7 +137,13 @@ const SettingsForm = ({ handleSubmit, onDelete, onRequestData, showRequestDialog
 
       <div className={styles.deleteAccountSection}>
         <h2>Account removal</h2>
-        <p>You have the right to request the deletion of your account and all personal data we store about you at any time. Upon receiving such a request, we will permanently erase your information from our systems in accordance with applicable data protection laws, unless retention is required by law. This action is irreversible.</p>
+        <p>
+          You have the right to request the deletion of your account and all
+          personal data we store about you at any time. Upon receiving such a
+          request, we will permanently erase your information from our systems
+          in accordance with applicable data protection laws, unless retention
+          is required by law. This action is irreversible.
+        </p>
         <Button type="button" onClick={onDelete} variant="warning">
           Permanently Delete Account
         </Button>

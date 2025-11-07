@@ -20,7 +20,7 @@
 }
 
 .form button {
-  width: fit-content;
+  max-width: 280px;
 }
 
 .form input {
@@ -74,8 +74,28 @@
   margin-top: 0;
 }
 
+.deleteAccountSection button {
+  margin-top: 12px;
+  width: auto;
+  display: inline-flex;
+}
+
 .logoutSection {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 20px;
   margin-top: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.help {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.4;
 }
