@@ -5,7 +5,8 @@ export const useJournalService = () => {
   const { journal } = useApi();
   const { csrf } = useCsrf();
 
-  const postSave = (data, captcha) => journal.post("/journal/upsert", { data, captcha }, csrf());
+  const upsertJournal = (data, captcha) => journal.post("/journal/upsert", { data, captcha }, csrf());
+  const getJournal = (author, date, captcha) => journal.get("/journal/" + author + "/" + date, { captcha }, csrf());
 
-  return { postSave };
+  return { upsertJournal, getJournal };
 };

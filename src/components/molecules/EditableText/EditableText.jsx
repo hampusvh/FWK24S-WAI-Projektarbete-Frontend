@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Input from "../../atoms/Input/Input";
 import styles from "./EditableText.module.css";
 
-const EditableText = ({ name, placeholder, onChange }) => {
+const EditableText = ({ name, placeholder, onChange, defValue = "" }) => {
     const [editable, setEditable] = useState(false);
     const [text, setText] = useState("");
     const inputRef = useRef(null);
@@ -12,6 +12,10 @@ const EditableText = ({ name, placeholder, onChange }) => {
             inputRef.current.focus();
         }
     }, [editable]);
+
+    useEffect(() => {
+        setText(defValue);
+    }, [defValue]);
 
     const handleChange = (e) => {
         setText(e.target.value);

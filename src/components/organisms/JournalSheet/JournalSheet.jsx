@@ -1,38 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./JournalSheet.module.css";
 import JournalEntry from "../JournalEntry/JournalEntry";
 import { useJournal } from "../../../hooks/useJournal";
 import { useAuth } from "../../../providers/AuthProvider";
-import { useCsrf } from "../../../providers/CsrfProvider";
-import { useRecaptcha } from "../../../utils/recaptcha";
+import { todayISODate } from "../../../utils/dates";
 
 /*
 * Todo: den ska visa den senaste journalen 
 */
 const JournalSheet = () => {
-  const { handlePostSave } = useJournal();
+  const { handleUpsertJournal, handleGetJournal } = useJournal();
   const { user } = useAuth();
-  const [data, setData] = React.useState({});
-  const { getRecaptchaToken } = useRecaptcha();
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getJournal = handleGetJournal(user.id, todayISODate(), null);
+    getJournal.then((res) => {
+      setData(res.journal);
+      setLoading(false);
+    });
+  }, []);
 
   const onSave = async () => {
-    let token = null;
-
-    if (import.meta.env.VITE_ENV == "production") {
-      token = await getRecaptchaToken("login");
-      if (!token) {
-        setError("reCAPTCHA verification failed");
-        setShowError(true);
-        setTimeout(() => {
-          setShowError(false);
-          setError("");
-        }, 4000);
-        return;
-      }
-    }
-
-    const save = await handlePostSave({ ...data, author: user.id }, token);
-    console.log("Saved journal entry:", save);
+    const save = await handleUpsertJournal({ ...data, author: user.id }, null);
   };
 
   const onDelete = () => {};
@@ -49,6 +40,8 @@ const JournalSheet = () => {
     setData({ ...data, title: e.target.value });
   };
 
+  if(loading) return <>Loading...</>
+
   return <JournalEntry
       onSave={onSave}
       onDelete={onDelete}
@@ -58,6 +51,7 @@ const JournalSheet = () => {
       onList={onList}
       onTitleChange={onTitleChange}
       onContentChange={onContentChange}
+      data={data}
     />;
 };
 
