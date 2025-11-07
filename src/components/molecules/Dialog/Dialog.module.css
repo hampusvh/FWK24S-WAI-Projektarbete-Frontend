@@ -48,6 +48,11 @@
   gap: 0.5rem;
 }
 
+.Footer :where(button, a[role="button"]) {
+  width: auto !important;
+  min-width: 235px;
+}
+
 .Body input,
 .Body textarea,
 .Body select {
