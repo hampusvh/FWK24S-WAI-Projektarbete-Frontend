@@ -3,12 +3,12 @@ import styles from "./JournalHeader.module.css";
 import Button from "../../atoms/Button/Button";
 import DeleteIcon from "../../../assets/icons/delete-icon.svg?react";
 
-const JournalHeader = ({ onSave, onNew, onDelete }) => {
+const JournalHeader = ({ onSave, onNew, onDelete, onTitleChange }) => {
   return (
     <div className={styles.JournalHeaderContainer}>
       <div className={styles.TitleContainer}>
         <div className={styles.Title}> 
-          <EditableText placeholder="Enter your title..." /> 
+          <EditableText placeholder="Enter your title..." onChange={onTitleChange} /> 
         </div>
         <p className={styles.Date}>{formatDate(new Date())}</p>
       </div>

@@ -136,6 +136,25 @@ const ApiProvider = ({ children }) => {
           headers: { "X-CSRF-Token": csrfToken },
         }),
     },
+    journal: {
+      get: (url, csrfToken = "") =>
+        request(AUTH_URL, url, {
+          method: "GET",
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
+      post: (url, body, csrfToken = "") =>
+        request(AUTH_URL, url, {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
+      patch: (url, body, csrfToken = "") =>
+        request(AUTH_URL, url, {
+          method: "PATCH",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken },
+        }),
+    },
     binary: {
       get: (url, headers = {}) =>
         requestBinary(AUTH_URL, url, { method: "GET", headers }),

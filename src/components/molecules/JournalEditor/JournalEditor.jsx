@@ -2,12 +2,12 @@ import PaperBackground from "../../atoms/PaperBackground/PaperBackground";
 import TextAreaBase from "../../atoms/TextAreaBase/TextAreaBase";
 import styles from "./JournalEditor.module.css";
 
-const JournalEditor = () => {
+const JournalEditor = ({ onContentChange }) => {
   return (
     <div className={styles.JournalEditor}>
       <PaperBackground >
         <div className={styles.TextAreaBaseWrapper} >
-          <TextAreaBase placeholder="Skriv här..." />
+          <TextAreaBase onInput={onContentChange} placeholder="Skriv här..." />
         </div>
       </PaperBackground>
     </div>

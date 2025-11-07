@@ -5,15 +5,15 @@ import JournalEditor from "../../molecules/JournalEditor/JournalEditor";
 import JournalControls from "../../molecules/JournalControls/JournalControls";
 
 
-const JournalEntry = ({ actions }) => {
-  const { onSave, onDelete, onNew, onNext, onPrev, onList } = actions;
+const JournalEntry = (props) => {
+  const { onSave, onDelete, onNew, onNext, onPrev, onList, onTitleChange, onContentChange } = props;
   
   return (
     <div className={styles.container}>
-      <JournalHeader onDelete={onDelete} onNew={onNew} onSave={onSave} />
+      <JournalHeader onDelete={onDelete} onNew={onNew} onSave={onSave} onTitleChange={onTitleChange} />
       <div className={styles.page}>
         <JournalControls onNext={onNext} onPrev={onPrev} onList={onList}/>
-        <JournalEditor />
+        <JournalEditor onContentChange={onContentChange} />
       </div>
     </div>
   );

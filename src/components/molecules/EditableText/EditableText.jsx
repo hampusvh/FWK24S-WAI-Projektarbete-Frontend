@@ -2,15 +2,21 @@ import { useEffect, useRef, useState } from "react";
 import Input from "../../atoms/Input/Input";
 import styles from "./EditableText.module.css";
 
-const EditableText = ({ name, placeholder, textValue, onChange }) => {
+const EditableText = ({ name, placeholder, onChange }) => {
     const [editable, setEditable] = useState(false);
+    const [text, setText] = useState("");
     const inputRef = useRef(null);
 
     useEffect(() => {
         if(editable && inputRef.current) {
             inputRef.current.focus();
         }
-    }, [editable])
+    }, [editable]);
+
+    const handleChange = (e) => {
+        setText(e.target.value);
+        onChange?.(e); 
+    };
 
     return editable ? <Input
         className={styles.editableText}
@@ -18,10 +24,10 @@ const EditableText = ({ name, placeholder, textValue, onChange }) => {
         type="text"
         name={name}
         placeholder={placeholder}
-        value={textValue}
+        value={text}
         onBlur={() => setEditable(false)}
-        onChange={onChange}
-      /> : <div className={styles.editableTextLabel} onClick={() => setEditable(true)}>{textValue || placeholder}</div>;
+        onChange={handleChange}
+      /> : <div className={styles.editableTextLabel} onClick={() => setEditable(true)}>{text || placeholder}</div>;
 }
 
 export default EditableText;

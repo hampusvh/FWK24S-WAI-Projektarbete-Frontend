@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import styles from "./TextAreaBase.module.css";
 
-const TextAreaBase = forwardRef(({ placeholder }, ref) => {
+const TextAreaBase = forwardRef(({ placeholder, onInput }, ref) => {
     return (
         <div
             ref={ref}
@@ -9,6 +9,7 @@ const TextAreaBase = forwardRef(({ placeholder }, ref) => {
             className={styles.textAreaBase}
             suppressContentEditableWarning
             data-placeholder={ placeholder }
+            onInput={onInput}
         />
     );
 });

@@ -51,7 +51,7 @@
 .Body input,
 .Body textarea,
 .Body select {
-  border: 1px solid #e5e7eb !important;
+  border: 1px solid #e5e7eb;
   background: #ffffff;
   color: #111827;
   border-radius: 10px;
