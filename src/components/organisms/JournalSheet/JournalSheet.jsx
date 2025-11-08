@@ -11,15 +11,22 @@ import { todayISODate } from "../../../utils/dates";
 const JournalSheet = () => {
   const { handleUpsertJournal, handleGetJournal } = useJournal();
   const { user } = useAuth();
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    title: "",
+    content: "",
+    author: user.id,
+    date: todayISODate(),
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getJournal = handleGetJournal(user.id, todayISODate(), null);
     getJournal.then((res) => {
       setData(res.journal);
+    })
+    .finally(error => {
       setLoading(false);
-    });
+    })
   }, []);
 
   const onSave = async () => {
