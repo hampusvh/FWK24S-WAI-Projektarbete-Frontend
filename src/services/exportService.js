@@ -5,7 +5,13 @@ export const useExportService = () => {
   const { binary } = useApi();
   const { csrf } = useCsrf();
 
-  const requestUserData = async (password) => binary.post(`/me/export/pdf`, { password }, csrf());
+  const requestUserDataPdf = async (password) => 
+    binary.post(`/me/export/pdf`, { password }, csrf()
+  );
 
-  return { requestUserData };
+  const requestUserDataJson = async (password) => 
+    binary.post(`/me/export/json`, { password }, csrf()
+  );
+
+  return { requestUserDataPdf, requestUserDataJson };
 };
