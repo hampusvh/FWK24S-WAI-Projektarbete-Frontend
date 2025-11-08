@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
+import fs from 'fs';
 
 // https://vite.dev/config/
 import path from 'node:path';
@@ -12,6 +13,14 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [svgr(), react()],
+  server: {
+    port: 5173,
+    https: {
+      key:  fs.readFileSync(path.resolve(__dirname, 'localhost+2-key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost+2.pem')),
+    },
+    host: 'localhost', // or '0.0.0.0' if you need LAN access
+  },
   test: {
     projects: [{
       extends: true,

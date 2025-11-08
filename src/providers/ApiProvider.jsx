@@ -99,22 +99,22 @@ const ApiProvider = ({ children }) => {
         }),
     },
     domain: {
-      get: (url, csrfToken = "") =>
+      get: (url, bearer) =>
         request(DOMAIN_URL, url, {
           method: "GET",
-          headers: { "X-CSRF-Token": csrfToken },
+          headers: { "Authorization": `Bearer ${bearer}` },
         }),
-      post: (url, body, csrfToken = "") =>
+      post: (url, body, bearer) =>
         request(DOMAIN_URL, url, {
           method: "POST",
           body: JSON.stringify(body),
-          headers: { "X-CSRF-Token": csrfToken },
+          headers: { "Authorization": `Bearer ${bearer}` },
         }),
-      patch: (url, body, csrfToken = "") =>
+      patch: (url, body, bearer) =>
         request(DOMAIN_URL, url, {
           method: "PATCH",
           body: JSON.stringify(body),
-          headers: { "X-CSRF-Token": csrfToken },
+          headers: { "Authorization": `Bearer ${bearer}` },
         }),
     },
     gdpr: {

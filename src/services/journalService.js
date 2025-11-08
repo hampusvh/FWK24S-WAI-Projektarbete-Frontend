@@ -1,12 +1,13 @@
+import { useCookies } from "react-cookie";
 import { useApi } from "../providers/ApiProvider";
 import { useCsrf } from "../providers/CsrfProvider";
 
 export const useJournalService = () => {
-  const { journal } = useApi();
-  const { csrf } = useCsrf();
+  const { domain } = useApi();
+  const [cookies] = useCookies(["accessToken"]);
 
-  const upsertJournal = (data, captcha) => journal.post("/journal/upsert", { data, captcha }, csrf());
-  const getJournal = (author, date, captcha) => journal.get("/journal/" + author + "/" + date, { captcha }, csrf());
+  const upsertJournal = (data, captcha) => domain.post("/journal/upsert", { data, captcha }, cookies.accessToken);
+  const getJournal = (author, date, captcha) => domain.get("/journal/" + author + "/" + date, cookies.accessToken);
 
   return { upsertJournal, getJournal };
 };
