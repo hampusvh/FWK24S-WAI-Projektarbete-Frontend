@@ -49,8 +49,8 @@
 }
 
 .Footer :where(button, a[role="button"]) {
-  width: auto !important;
-  min-width: 235px;
+  flex: 1; 
+  min-width: 0;
 }
 
 .Body input,

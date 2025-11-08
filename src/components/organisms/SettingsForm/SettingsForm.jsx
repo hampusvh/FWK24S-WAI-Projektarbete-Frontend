@@ -22,7 +22,7 @@ const SettingsForm = ({
   setPassword,
 }) => {
   const { user } = useAuth();
-  const { error, downloadUserData } = useExport();
+  const { error, downloadUserData, downloadUserDataJson } = useExport();
   const { csrf } = useCsrf();
   const { getRecaptchaToken } = useRecaptcha();
   const navigate = useNavigate();
@@ -111,7 +111,13 @@ const SettingsForm = ({
                 onClick={() => downloadUserData(password)}
                 disabled={disableRequestButton}
               >
-                Request data
+                PDF
+              </Button>
+              <Button
+                onClick={() => downloadUserDataJson(password)}
+                disabled={disableRequestButton}
+              >
+                JSON
               </Button>
             </>
           }
