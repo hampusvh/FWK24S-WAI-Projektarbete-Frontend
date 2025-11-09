@@ -10,7 +10,7 @@ const JournalEntry = (props) => {
   
   return (
     <div className={styles.container}>
-      <JournalHeader onDelete={onDelete} onNew={onNew} onSave={onSave} onTitleChange={onTitleChange} title={data.title} />
+      <JournalHeader onDelete={onDelete} onNew={onNew} onSave={onSave} onTitleChange={onTitleChange} title={data.title} date={data.date || formatDate(new Date())} />
       <div className={styles.page}>
         <JournalControls onNext={onNext} onPrev={onPrev} onList={onList}/>
         <JournalEditor onContentChange={onContentChange} content={data.content} />
@@ -18,5 +18,9 @@ const JournalEntry = (props) => {
     </div>
   );
 };
+
+function formatDate(date) {
+  return date.toLocaleDateString("sv-SE"); 
+}
 
 export default JournalEntry;

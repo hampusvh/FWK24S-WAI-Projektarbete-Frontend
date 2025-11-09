@@ -6,11 +6,10 @@
     #fff 23px,
     #d0e0f0 24px
   );
+  background-repeat: repeat-y;
   line-height: 24px;
   padding: 24px 16px;
   border-radius: 0 0 6px 6px;
   width: 100%;
-  min-height: 80vh;
-  box-sizing: border-box;
-  font-family: "Georgia", serif;
+  min-height: 1000px;
 }

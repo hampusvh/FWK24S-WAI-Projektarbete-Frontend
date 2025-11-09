@@ -12,12 +12,12 @@ const SideBar = () => {
   return (
     <aside className={styles.sidebar}>
       <Link to="/" className={styles.sidebarItem + " " + (location.pathname == "/" ? styles.active : "")}>
-        <OpenBookIcon size="46" />
+        <OpenBookIcon size="36" />
         <span>Journal</span>
       </Link>
 
       <Link to="/settings" className={styles.sidebarItem + " " + (location.pathname == "/settings" ? styles.active : "")}>
-        <UserIcon size="46" />
+        <UserIcon size="36" />
         <span>Account</span>
       </Link>
     </aside>
