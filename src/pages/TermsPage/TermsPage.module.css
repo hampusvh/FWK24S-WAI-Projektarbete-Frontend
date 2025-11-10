@@ -2,4 +2,5 @@
   padding: 28px 16px;
   display: flex;
   justify-content: center;
+  overflow: auto;
 }
