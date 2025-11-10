@@ -29,8 +29,7 @@ dist-ssr
 storybook-static
 
 .env
-.env.production
-.env.development
+.env.*
 
 *.pem
 localhost*.pem
