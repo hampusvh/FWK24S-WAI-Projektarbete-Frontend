@@ -33,7 +33,7 @@ VITE_CSP="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' ht
 Skapa en `.env.production`-fil i projektets rotkatalog med följande innehåll:
 
 ```bash
-VITE_ENV="development"
+VITE_ENV="production"
 VITE_AUTH_API_URL="http://localhost:3001"
 VITE_DOMAIN_API_URL="http://localhost:3002"
 VITE_RECAPTCHA_KEY="6Lfb_OkrAAAAAKwVU7G0vNKTewyt_0PUuq0yHpsg"

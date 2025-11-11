@@ -119,37 +119,18 @@ const ApiProvider = ({ children }) => {
     },
     gdpr: {
       get: (url, csrfToken = "") =>
-        request(AUTH_URL, url, {
+        request(DOMAIN_URL, url, {
           method: "GET",
           headers: { "X-CSRF-Token": csrfToken },
         }),
       post: (url, body, csrfToken = "") =>
-        request(AUTH_URL, url, {
+        request(DOMAIN_URL, url, {
           method: "POST",
           body: JSON.stringify(body),
           headers: { "X-CSRF-Token": csrfToken },
         }),
       patch: (url, body, csrfToken = "") =>
-        request(AUTH_URL, url, {
-          method: "PATCH",
-          body: JSON.stringify(body),
-          headers: { "X-CSRF-Token": csrfToken },
-        }),
-    },
-    journal: {
-      get: (url, csrfToken = "") =>
-        request(AUTH_URL, url, {
-          method: "GET",
-          headers: { "X-CSRF-Token": csrfToken },
-        }),
-      post: (url, body, csrfToken = "") =>
-        request(AUTH_URL, url, {
-          method: "POST",
-          body: JSON.stringify(body),
-          headers: { "X-CSRF-Token": csrfToken },
-        }),
-      patch: (url, body, csrfToken = "") =>
-        request(AUTH_URL, url, {
+        request(DOMAIN_URL, url, {
           method: "PATCH",
           body: JSON.stringify(body),
           headers: { "X-CSRF-Token": csrfToken },
@@ -157,9 +138,9 @@ const ApiProvider = ({ children }) => {
     },
     binary: {
       get: (url, headers = {}) =>
-        requestBinary(AUTH_URL, url, { method: "GET", headers }),
+        requestBinary(DOMAIN_URL, url, { method: "GET", headers }),
       post: (url, body, headers = {}, csrfToken) =>
-        requestBinary(AUTH_URL, url, {
+        requestBinary(DOMAIN_URL, url, {
           method: "POST",
           body: JSON.stringify(body),
           headers: { "X-CSRF-Token": csrfToken },

@@ -53,7 +53,7 @@ const ConsentProvider = ({ children }) => {
     if (current !== serialized) {
       setCookie("consent", decodeURIComponent(serialized), {
         path: "/",
-        sameSite: "strict",
+        sameSite: "None",
         secure: import.meta.env.VITE_ENV === "production",
         maxAge: 31536000,
       });
