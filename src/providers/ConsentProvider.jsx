@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import ConsentBanner from "../components/organisms/ConsentBanner/ConsentBanner";
 import { useGdpr } from "../hooks/useGdpr";
+import { useRecaptcha } from "../utils/recaptcha";
 
 export const ConsentContext = createContext();
 
@@ -21,6 +22,7 @@ const ConsentProvider = ({ children }) => {
   const [cookie, setCookie] = useCookies(["consent"]);
   const [editing, setEditing] = useState(false);
   const { handleStoreConsent } = useGdpr();
+  const { getRecaptchaToken } = useRecaptcha();
 
   const getCookieByName = (name) => {
     const match = document.cookie.match(

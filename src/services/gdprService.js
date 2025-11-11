@@ -1,11 +1,11 @@
 import { useApi } from "../providers/ApiProvider";
 
 export const useGdprService = () => {
-  const { gdpr } = useApi();
+  const { proxy } = useApi();
 
-  const storeConsent = (consent, token) => gdpr.post("/gdpr/consent/store", { consent, token });
+  const storeConsent = (consent, token) => proxy.post("/api/gdpr/consent/store", { consent, token }, null);
   
-  const getTransparency = (token) => gdpr.get("/gdpr/transparency", { token });
+  const getTransparency = (token) => proxy.get("/api/gdpr/transparency", { token }, null);
 
 
   return { storeConsent, getTransparency };
