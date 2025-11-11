@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 -p 6006 --https --ssl-cert ./localhost+2.pem --ssl-key ./localhost+2-key.pem",
     "build-storybook": "storybook build",
     "test-storybook": "vitest --project=storybook"
   },

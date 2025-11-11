@@ -1,7 +1,7 @@
-import AppLayout from "./AppLayout";
+import AppLayout from "../AppLayout/AppLayout";
 
 export default {
-  title: 'layouts/AppLayout',
+  title: 'layouts/GuestAppLayout',
   component: AppLayout,
 }
 
