@@ -1,8 +1,8 @@
-import AppLayout from "./AppLayout";
+import GuestLayout from "./GuestLayout";
 
 export default {
-  title: 'layouts/AppLayout',
-  component: AppLayout,
+  title: 'layouts/GuestLayout',
+  component: GuestLayout,
 }
 
 export const Default = {

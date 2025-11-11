@@ -2,15 +2,14 @@ import { useApi } from "../providers/ApiProvider";
 import { useCsrf } from "../providers/CsrfProvider";
 
 export const useExportService = () => {
-  const { binary } = useApi();
-  const { csrf } = useCsrf();
+  const { binary, proxy } = useApi();
 
   const requestUserDataPdf = async (password) => 
-    binary.post(`/me/export/pdf`, { password }, csrf()
+    proxy.post(`/api/me/export/pdf`, { password }, null
   );
 
   const requestUserDataJson = async (password) => 
-    binary.post(`/me/export/json`, { password }, csrf()
+    proxy.post(`/api/me/export/json`, { password }, null
   );
 
   return { requestUserDataPdf, requestUserDataJson };

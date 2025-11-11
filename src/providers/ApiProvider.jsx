@@ -8,7 +8,7 @@ const ApiProvider = ({ children }) => {
   const { fetchCsrf, refreshCsrf } = useCsrf();
 
   const AUTH_URL = import.meta.env.VITE_AUTH_API_URL;
-  const DOMAIN_URL = import.meta.env.VITE_DOMAIN_API_URL;
+  const DOMAIN_URL = "https://localhost:8080";
 
   const request = async (base, endpoint, options = {}) => {
     try {
@@ -117,6 +117,25 @@ const ApiProvider = ({ children }) => {
           headers: { "Authorization": `Bearer ${bearer}` },
         }),
     },
+    proxy: {
+      get: (url) =>
+        request("https://localhost:8080", url, {
+          method: "GET",
+          headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+        }),
+      post: (url, body, csrfToken = "") =>
+        request("https://localhost:8080", url, {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken, 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+        }),
+      patch: (url, body, csrfToken = "") =>
+        request("https://localhost:8080", url, {
+          method: "PATCH",
+          body: JSON.stringify(body),
+          headers: { "X-CSRF-Token": csrfToken, 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+        }),
+    },
     gdpr: {
       get: (url, csrfToken = "") =>
         request(DOMAIN_URL, url, {
@@ -138,12 +157,12 @@ const ApiProvider = ({ children }) => {
     },
     binary: {
       get: (url, headers = {}) =>
-        requestBinary(DOMAIN_URL, url, { method: "GET", headers }),
-      post: (url, body, headers = {}, csrfToken) =>
-        requestBinary(DOMAIN_URL, url, {
+        request(DOMAIN_URL, url, { method: "GET", headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, }),
+      post: (url, body, headers = {}) =>
+        request(DOMAIN_URL, url, {
           method: "POST",
           body: JSON.stringify(body),
-          headers: { "X-CSRF-Token": csrfToken },
+          headers: { 'X-Requested-With': 'XMLHttpRequest' },
         }),
     },
   };
