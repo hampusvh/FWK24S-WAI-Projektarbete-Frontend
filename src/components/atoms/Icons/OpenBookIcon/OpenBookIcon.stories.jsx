@@ -1,4 +1,4 @@
-import OpenBookIcon from "./Icons/OpenBookIcon/OpenBookIcon";
+import OpenBookIcon from "./OpenBookIcon";
 
 export default {
   title: "Atoms/Icons/OpenBookIcon/OpenBookIcon",

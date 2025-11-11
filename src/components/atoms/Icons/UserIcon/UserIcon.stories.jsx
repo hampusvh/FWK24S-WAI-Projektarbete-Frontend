@@ -1,4 +1,4 @@
-import UserIcon from "./Icons/UserIcon/UserIcon";
+import UserIcon from "./UserIcon";
 
 export default {
   title: "Atoms/Icons/UserIcon/UserIcon",
